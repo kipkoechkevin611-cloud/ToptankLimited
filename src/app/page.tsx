@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { products, getCategories } from "@/lib/products";
-import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2 } from "lucide-react";
+import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 
 export default function Home() {
@@ -62,16 +62,16 @@ export default function Home() {
                 <span className="text-sm font-semibold">🇰🇪 Proudly Made in Kenya</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Premium Triple Layer Water Tanks
+                Kenya's Premier Water Storage & Industrial Solutions
               </h1>
               <p className="text-lg md:text-xl mb-8 text-blue-100 leading-relaxed max-w-xl">
-                Durable water storage solutions for homes, farms, businesses, and institutions across Kenya.
+                Premium triple-layer water tanks and industrial products for homes, farms, businesses, and institutions across Kenya.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/shop">
+                <Link href="/shop?category=TANKS">
                   <Button size="lg" className="w-full sm:w-auto bg-white text-blue-600 hover:bg-blue-50 shadow-xl">
                     <ShoppingBag className="mr-2 h-5 w-5" />
-                    Shop Water Tanks
+                    Shop Vertical Tanks
                   </Button>
                 </Link>
                 <Link href="/contact">
@@ -118,8 +118,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trust Badges Row */}
+      <section className="bg-white border-b border-gray-200 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-center justify-center gap-3 text-gray-700">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <Check className="h-6 w-6 text-green-600" />
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">100% Virgin Food-Grade Material</p>
+                <p className="text-sm text-gray-500">Safe for drinking water storage</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-3 text-gray-700">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Shield className="h-6 w-6 text-blue-600" />
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Official TopTank Warranty</p>
+                <p className="text-sm text-gray-500">Quality guaranteed</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-3 text-gray-700">
+              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                <Truck className="h-6 w-6 text-orange-600" />
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Fast Countrywide Delivery</p>
+                <p className="text-sm text-gray-500">Free delivery across Kenya</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -149,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Shop by Category */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 bg-slate-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -195,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose TopTank */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-20 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -253,7 +288,7 @@ export default function Home() {
       </section>
 
       {/* Applications */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-slate-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -297,7 +332,7 @@ export default function Home() {
       </section>
 
       {/* How Ordering Works */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

@@ -13,6 +13,7 @@ export default function ShopClient() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("all");
+  const [selectedCapacity, setSelectedCapacity] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("price-asc");
   const [showFilters, setShowFilters] = useState(false);
 
@@ -70,6 +71,23 @@ export default function ShopClient() {
       filtered = filtered.filter((product) => product.subcategory === selectedSubcategory);
     }
 
+    // Filter by capacity
+    if (selectedCapacity !== "all") {
+      filtered = filtered.filter((product) => {
+        if (!product.capacity) return false;
+        switch (selectedCapacity) {
+          case "small":
+            return product.capacity <= 1000;
+          case "medium":
+            return product.capacity > 1000 && product.capacity <= 5000;
+          case "large":
+            return product.capacity > 5000;
+          default:
+            return true;
+        }
+      });
+    }
+
     // Sort products - priority first, then by selected sort
     filtered.sort((a, b) => {
       // Priority sorting: products with priority come first
@@ -95,7 +113,7 @@ export default function ShopClient() {
     });
 
     return filtered;
-  }, [searchQuery, selectedCategory, selectedSubcategory, sortBy]);
+  }, [searchQuery, selectedCategory, selectedSubcategory, selectedCapacity, sortBy]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -209,6 +227,51 @@ export default function ShopClient() {
                 </div>
               </>
             )}
+
+            {/* Capacity Filters */}
+            <h3 className="font-semibold text-gray-900 mb-4 mt-6">Filter by Capacity</h3>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCapacity("all")}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  selectedCapacity === "all"
+                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                }`}
+              >
+                All Capacities
+              </button>
+              <button
+                onClick={() => setSelectedCapacity("small")}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  selectedCapacity === "small"
+                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                }`}
+              >
+                100L - 1,000L
+              </button>
+              <button
+                onClick={() => setSelectedCapacity("medium")}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  selectedCapacity === "medium"
+                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                }`}
+              >
+                1,500L - 5,000L
+              </button>
+              <button
+                onClick={() => setSelectedCapacity("large")}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  selectedCapacity === "large"
+                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                }`}
+              >
+                6,000L+
+              </button>
+            </div>
           </div>
         </div>
 
@@ -237,6 +300,7 @@ export default function ShopClient() {
                 setSearchQuery("");
                 setSelectedCategory("all");
                 setSelectedSubcategory("all");
+                setSelectedCapacity("all");
               }}
               variant="outline"
               className="border-blue-200 text-blue-700 hover:bg-blue-50"

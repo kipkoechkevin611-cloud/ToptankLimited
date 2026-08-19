@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Search, ShoppingCart, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,14 +8,28 @@ import { useCart } from "@/contexts/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showCartPopup, setShowCartPopup] = useState(false);
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
+  const [previousCartCount, setPreviousCartCount] = useState(cartCount);
+
+  // Show popup when cart count increases
+  useEffect(() => {
+    if (cartCount > previousCartCount) {
+      setShowCartPopup(true);
+      const timer = setTimeout(() => setShowCartPopup(false), 2000);
+      return () => clearTimeout(timer);
+    }
+    setPreviousCartCount(cartCount);
+  }, [cartCount, previousCartCount]);
 
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-blue-900 text-white text-center py-2 px-4 text-xs sm:text-sm">
-        <p className="font-medium">Quality Water Storage • Reliable Delivery • Serving Customers Across Kenya</p>
+      <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white text-center py-2.5 px-4 text-xs sm:text-sm font-semibold">
+        <p className="flex items-center justify-center gap-2">
+          🔥 Flash Sale: 20% Off All Tanks & Industrial Products — Direct Delivery Available
+        </p>
       </div>
 
       {/* Main Navbar */}
@@ -64,6 +78,12 @@ export default function Navbar() {
                     </span>
                   )}
                 </Button>
+                {/* Cart Popup */}
+                {showCartPopup && (
+                  <div className="absolute -top-12 right-0 bg-green-600 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-lg animate-bounce whitespace-nowrap">
+                    Added to cart! ({cartCount})
+                  </div>
+                )}
               </Link>
               <Link href="/contact">
                 <Button variant="outline" size="sm" className="border-blue-600 text-blue-600 hover:bg-blue-50">
