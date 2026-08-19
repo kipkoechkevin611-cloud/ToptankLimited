@@ -6670,16 +6670,34 @@ export function getProductsBySubcategory(category: string, subcategory: string):
 }
 
 export function getCategories(): string[] {
-  return Array.from(new Set(products.map(product => product.category)));
+  const categories = Array.from(new Set(products.map(product => product.category)));
+  // Move TANKS to first position
+  const tanksIndex = categories.indexOf('TANKS');
+  if (tanksIndex > -1) {
+    categories.splice(tanksIndex, 1);
+    categories.unshift('TANKS');
+  }
+  return categories;
 }
 
 export function getSubcategories(category: string): string[] {
-  return Array.from(new Set(
+  const subcategories = Array.from(new Set(
     products
       .filter(product => product.category === category)
       .map(product => product.subcategory)
       .filter(Boolean) as string[]
   ));
+  
+  // For TANKS category, move Vertical Cylindrical to first position
+  if (category === 'TANKS') {
+    const verticalIndex = subcategories.indexOf('Vertical Cylindrical');
+    if (verticalIndex > -1) {
+      subcategories.splice(verticalIndex, 1);
+      subcategories.unshift('Vertical Cylindrical');
+    }
+  }
+  
+  return subcategories;
 }
 
 export function formatPrice(price: number): string {

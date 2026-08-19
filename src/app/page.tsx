@@ -8,8 +8,10 @@ import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Buil
 import { useCart } from "@/contexts/CartContext";
 
 export default function Home() {
-  // Sort products by priority first, then take first 4
-  const sortedProducts = [...products].sort((a, b) => {
+  // Filter for Vertical Cylindrical Tanks and sort by priority, then take first 4
+  const verticalCylindricalTanks = products.filter(p => 
+    p.category === 'TANKS' && p.subcategory === 'Vertical Cylindrical'
+  ).sort((a, b) => {
     const priorityA = a.priority || 0;
     const priorityB = b.priority || 0;
     if (priorityA !== priorityB) {
@@ -17,7 +19,7 @@ export default function Home() {
     }
     return 0;
   });
-  const featuredProducts = sortedProducts.slice(0, 4);
+  const featuredProducts = verticalCylindricalTanks.slice(0, 4);
   const { addToCart } = useCart();
   const categories = getCategories();
 

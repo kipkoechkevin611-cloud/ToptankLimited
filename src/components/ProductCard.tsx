@@ -15,18 +15,19 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 group">
       {/* Product Image */}
       <Link href={`/product/${product.slug}`}>
-        <div className="aspect-square bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="aspect-square bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-6 relative overflow-hidden">
           <Image 
             src={product.image} 
             alt={product.name}
-            width={400}
-            height={400}
+            width={600}
+            height={600}
             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-            quality={90}
+            quality={95}
             unoptimized
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = '/TANKS/deluxe cylindrical tank/Deluxe Cylindrical Tank.jpeg';
+              target.src = '/TANKS/verticalcylindrical tank/Deluxe Cylindrical Tank.jpeg';
             }}
           />
         </div>

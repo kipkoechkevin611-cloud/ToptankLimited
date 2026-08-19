@@ -68,11 +68,12 @@ export default function ProductPageClient({ product }: { product: Product }) {
               <Image 
                 src={productImages[selectedImageIndex] || product.image} 
                 alt={`${product.name} - Image ${selectedImageIndex + 1}`}
-                width={800}
-                height={800}
-                className="w-full h-full object-contain p-4 transition-all duration-300 group-hover:scale-105"
+                width={1200}
+                height={1200}
+                className="w-full h-full object-contain p-6 transition-all duration-300 group-hover:scale-105"
                 quality={95}
                 unoptimized
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src = product.image;
@@ -115,11 +116,12 @@ export default function ProductPageClient({ product }: { product: Product }) {
                       <Image
                         src={img}
                         alt={`Thumbnail ${index + 1}`}
-                        width={80}
-                        height={80}
-                        className="w-full h-full object-cover"
-                        quality={85}
+                        width={120}
+                        height={120}
+                        className="w-full h-full object-contain"
+                        quality={95}
                         unoptimized
+                        sizes="80px"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = product.image;
