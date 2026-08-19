@@ -18,10 +18,10 @@ export default function SearchPage() {
       const filtered = products.filter(
         (product) =>
           product.name.toLowerCase().includes(searchQuery) ||
-          product.capacity.toString().includes(searchQuery) ||
-          product.capacity.toString().replace(/,/g, "").includes(searchQuery) ||
+          (product.capacity !== undefined && product.capacity.toString().includes(searchQuery)) ||
+          (product.capacity !== undefined && product.capacity.toString().replace(/,/g, "").includes(searchQuery)) ||
           product.description.toLowerCase().includes(searchQuery) ||
-          formatCapacity(product.capacity).toLowerCase().includes(searchQuery)
+          (product.capacity !== undefined && formatCapacity(product.capacity).toLowerCase().includes(searchQuery))
       );
       setResults(filtered);
     } else {

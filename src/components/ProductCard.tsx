@@ -63,19 +63,8 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         </div>
 
         <div className="flex gap-2">
-          {onAddToCart && product.inStock && (
-            <Button
-              size="sm"
-              onClick={() => onAddToCart(product)}
-              className="flex-1 text-xs sm:text-sm py-2.5 bg-blue-600 hover:bg-blue-700 text-white"
-            >
-              <ShoppingCart className="h-4 w-4 mr-1 sm:mr-2" />
-              <span className="hidden sm:inline">Add to Cart</span>
-              <span className="sm:hidden">Add</span>
-            </Button>
-          )}
           <Link href={`/product/${product.slug}`} className="flex-1">
-            <Button variant="outline" size="sm" className="w-full text-xs sm:text-sm py-2.5 border-blue-200 text-blue-700 hover:bg-blue-50 hover:text-blue-800">
+            <Button size="sm" className="w-full text-xs sm:text-sm py-2.5 bg-blue-600 hover:bg-blue-700 text-white">
               View Details
             </Button>
           </Link>
