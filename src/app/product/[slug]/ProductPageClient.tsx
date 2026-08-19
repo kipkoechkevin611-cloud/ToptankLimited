@@ -15,6 +15,9 @@ export default function ProductPageClient({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string>("");
 
+  // Ensure images array exists and has at least one image
+  const productImages = product.images && product.images.length > 0 ? product.images : [product.image];
+
   // Extract available colors from specifications or features
   const availableColors = product.specifications?.color 
     ? product.specifications.color.split('/').map(c => c.trim()).filter(c => c && !c.toLowerCase().includes('various'))
@@ -35,11 +38,11 @@ export default function ProductPageClient({ product }: { product: Product }) {
   };
 
   const handlePrevImage = () => {
-    setSelectedImageIndex((prev) => (prev === 0 ? product.images.length - 1 : prev - 1));
+    setSelectedImageIndex((prev) => (prev === 0 ? productImages.length - 1 : prev - 1));
   };
 
   const handleNextImage = () => {
-    setSelectedImageIndex((prev) => (prev === product.images.length - 1 ? 0 : prev + 1));
+    setSelectedImageIndex((prev) => (prev === productImages.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -63,7 +66,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
               }}></div>
               
               <Image 
-                src={product.images[selectedImageIndex] || product.image} 
+                src={productImages[selectedImageIndex] || product.image} 
                 alt={`${product.name} - Image ${selectedImageIndex + 1}`}
                 width={800}
                 height={800}
@@ -77,7 +80,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
               />
 
               {/* Navigation Arrows */}
-              {product.images.length > 1 && (
+              {productImages.length > 1 && (
                 <>
                   <button
                     onClick={handlePrevImage}
@@ -96,10 +99,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
             </div>
             
             {/* Thumbnail Gallery */}
-            {product.images.length > 1 && (
+            {productImages.length > 1 && (
               <div className="p-4 bg-white border-t border-gray-100">
                 <div className="flex gap-3 overflow-x-auto pb-2">
-                  {product.images.map((img, index) => (
+                  {productImages.map((img, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}

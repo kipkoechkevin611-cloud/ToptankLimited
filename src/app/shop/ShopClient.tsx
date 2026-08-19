@@ -15,15 +15,6 @@ export default function ShopClient() {
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("price-asc");
   const [showFilters, setShowFilters] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   // Read category from URL params on mount and when URL changes
   useEffect(() => {
