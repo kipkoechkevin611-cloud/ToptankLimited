@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { products, getCategories } from "@/lib/products";
-import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check } from "lucide-react";
+import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check, Award } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 
 export default function Home() {
@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 py-16 md:py-24 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#063B78] py-16 md:py-24 lg:py-32 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -52,32 +52,31 @@ export default function Home() {
         </div>
         
         {/* Decorative Circles */}
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-64 h-64 bg-[#FFD21F]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#FFD21F]/5 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
-              <div className="inline-block bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/30">
+              <div className="inline-block bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/20">
                 <span className="text-sm font-semibold">🇰🇪 Proudly Made in Kenya</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Kenya's Premier Water Storage & Industrial Solutions
+                Kenya's Trusted Water Storage Solutions
               </h1>
               <p className="text-lg md:text-xl mb-8 text-blue-100 leading-relaxed max-w-xl">
-                Premium triple-layer water tanks and industrial products for homes, farms, businesses, and institutions across Kenya.
+                Premium triple-layer water tanks and industrial products built for Kenyan homes, farms, institutions and businesses.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/shop?category=TANKS">
-                  <Button size="lg" className="w-full sm:w-auto bg-white text-blue-600 hover:bg-blue-50 shadow-xl">
+                  <Button size="lg" className="w-full sm:w-auto bg-[#FFD21F] text-[#063B78] hover:bg-[#E6BD1B] shadow-xl font-semibold">
                     <ShoppingBag className="mr-2 h-5 w-5" />
-                    Shop Vertical Tanks
+                    Shop Water Tanks
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/shop">
                   <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Contact Us
+                    Browse All Products
                   </Button>
                 </Link>
               </div>
@@ -85,33 +84,35 @@ export default function Home() {
               {/* Trust Indicators */}
               <div className="flex flex-wrap gap-6 mt-10 pt-8 border-t border-white/20">
                 <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-blue-200" />
-                  <span className="text-sm font-medium">Triple Layer</span>
+                  <Shield className="h-5 w-5 text-[#FFD21F]" />
+                  <span className="text-sm font-medium">Triple-Layer Protection</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Truck className="h-5 w-5 text-blue-200" />
+                  <Truck className="h-5 w-5 text-[#FFD21F]" />
                   <span className="text-sm font-medium">Nationwide Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Droplets className="h-5 w-5 text-blue-200" />
+                  <Droplets className="h-5 w-5 text-[#FFD21F]" />
                   <span className="text-sm font-medium">UV Protected</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-[#FFD21F]" />
+                  <span className="text-sm font-medium">Food-Grade Material</span>
                 </div>
               </div>
             </div>
             <div className="flex justify-center relative order-first md:order-last">
-              {/* Tank Image with Enhanced Shadow */}
+              {/* Tank Image */}
               <div className="relative w-72 h-96 md:w-96 md:h-[32rem]">
-                <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/10 rounded-3xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 transform hover:scale-105 transition-transform duration-500 overflow-hidden">
+                <div className="absolute inset-0 bg-white/5 rounded-3xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 overflow-hidden">
                   <img 
-                    src={featuredProducts[0]?.image || "/TANKS/deluxe cylindrical tank/Deluxe Cylindrical Tank.jpeg"} 
+                    src={featuredProducts[0]?.image || "/TANKS/verticalcylindrical tank/Deluxe Cylindrical Tank.jpeg"} 
                     alt="TopTank Water Tank"
-                    className="w-full h-full object-contain p-10"
+                    className="w-full h-full object-contain p-8 md:p-12"
                   />
                 </div>
                 {/* Glow Effect */}
-                <div className="absolute -inset-4 bg-blue-400/30 rounded-3xl blur-2xl -z-10"></div>
-                {/* Reflection */}
-                <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-3/4 h-6 bg-blue-900/40 rounded-full blur-xl"></div>
+                <div className="absolute -inset-4 bg-[#FFD21F]/10 rounded-3xl blur-2xl -z-10"></div>
               </div>
             </div>
           </div>
@@ -121,32 +122,41 @@ export default function Home() {
       {/* Trust Badges Row */}
       <section className="bg-white border-b border-gray-200 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex items-center justify-center gap-3 text-gray-700">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <Check className="h-6 w-6 text-green-600" />
+              <div className="w-12 h-12 bg-[#063B78]/10 rounded-full flex items-center justify-center">
+                <Shield className="h-6 w-6 text-[#063B78]" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900">100% Virgin Food-Grade Material</p>
-                <p className="text-sm text-gray-500">Safe for drinking water storage</p>
+                <p className="font-semibold text-gray-900">Triple-Layer Construction</p>
+                <p className="text-sm text-gray-500">Extra durability</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 text-gray-700">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <Shield className="h-6 w-6 text-blue-600" />
+              <div className="w-12 h-12 bg-[#063B78]/10 rounded-full flex items-center justify-center">
+                <Truck className="h-6 w-6 text-[#063B78]" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Official TopTank Warranty</p>
-                <p className="text-sm text-gray-500">Quality guaranteed</p>
+                <p className="font-semibold text-gray-900">Nationwide Delivery</p>
+                <p className="text-sm text-gray-500">Across Kenya</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 text-gray-700">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                <Truck className="h-6 w-6 text-orange-600" />
+              <div className="w-12 h-12 bg-[#063B78]/10 rounded-full flex items-center justify-center">
+                <Droplets className="h-6 w-6 text-[#063B78]" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Fast Countrywide Delivery</p>
-                <p className="text-sm text-gray-500">Free delivery across Kenya</p>
+                <p className="font-semibold text-gray-900">UV Protected</p>
+                <p className="text-sm text-gray-500">Built for Kenyan weather</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-3 text-gray-700">
+              <div className="w-12 h-12 bg-[#063B78]/10 rounded-full flex items-center justify-center">
+                <Check className="h-6 w-6 text-[#063B78]" />
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Food Grade</p>
+                <p className="text-sm text-gray-500">Safe water storage</p>
               </div>
             </div>
           </div>
@@ -158,10 +168,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Featured Products
+              Popular Water Tanks
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Our most popular water tanks trusted by customers across Kenya
+              Our most trusted vertical cylindrical tanks for Kenyan homes and businesses
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -175,7 +185,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Link href="/shop">
-              <Button size="lg" className="shadow-lg bg-blue-600 hover:bg-blue-700 text-white px-8">
+              <Button size="lg" className="shadow-lg bg-[#063B78] hover:bg-[#052A5C] text-white px-8">
                 View All Products
               </Button>
             </Link>
@@ -233,51 +243,51 @@ export default function Home() {
               Why Choose TopTank
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              The trusted choice for water storage across Kenya
+              Built for Kenya, trusted by Kenyans
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Shield className="h-8 w-8 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Shield className="h-8 w-8 text-[#063B78]" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-gray-900">Triple-Layer Construction</h3>
-              <p className="text-gray-600 leading-relaxed">Enhanced durability with three protective layers for long-lasting performance.</p>
+              <p className="text-gray-600 leading-relaxed">Built for dependable long-term water storage.</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Droplets className="h-8 w-8 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Droplets className="h-8 w-8 text-[#063B78]" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Durable Water Storage</h3>
-              <p className="text-gray-600 leading-relaxed">Built to withstand harsh weather conditions and maintain water quality.</p>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">UV Protection</h3>
+              <p className="text-gray-600 leading-relaxed">Designed for demanding outdoor conditions.</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Users className="h-8 w-8 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Check className="h-8 w-8 text-[#063B78]" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Wide Range of Capacities</h3>
-              <p className="text-gray-600 leading-relaxed">From 1,000L to 24,000L to meet every water storage need.</p>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Food-Grade Material</h3>
+              <p className="text-gray-600 leading-relaxed">Suitable for safe drinking water storage.</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Phone className="h-8 w-8 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Truck className="h-8 w-8 text-[#063B78]" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Reliable Customer Service</h3>
-              <p className="text-gray-600 leading-relaxed">Dedicated support to help you choose the right tank for your needs.</p>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Nationwide Delivery</h3>
+              <p className="text-gray-600 leading-relaxed">Convenient delivery across Kenya.</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Truck className="h-8 w-8 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Building2 className="h-8 w-8 text-[#063B78]" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Delivery Options</h3>
-              <p className="text-gray-600 leading-relaxed">Convenient delivery across Kenya to get your tank to you.</p>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Built for Kenya</h3>
+              <p className="text-gray-600 leading-relaxed">Designed for local homes, farms and businesses.</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Building2 className="h-8 w-8 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Award className="h-8 w-8 text-[#063B78]" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Versatile Applications</h3>
-              <p className="text-gray-600 leading-relaxed">Suitable for homes, farms, businesses, and institutions.</p>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Quality Guarantee</h3>
+              <p className="text-gray-600 leading-relaxed">Official TopTank quality assurance.</p>
             </div>
           </div>
         </div>
@@ -296,29 +306,29 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <HomeIcon className="h-10 w-10 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <HomeIcon className="h-10 w-10 text-[#063B78]" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Residential</h3>
               <p className="text-gray-600">Homes and apartments</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Factory className="h-10 w-10 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Factory className="h-10 w-10 text-[#063B78]" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Agriculture</h3>
               <p className="text-gray-600">Farms and irrigation</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <School className="h-10 w-10 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <School className="h-10 w-10 text-[#063B78]" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Institutions</h3>
               <p className="text-gray-600">Schools and hospitals</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Building2 className="h-10 w-10 text-blue-600" />
+              <div className="bg-gradient-to-br from-[#063B78]/10 to-[#063B78]/20 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Building2 className="h-10 w-10 text-[#063B78]" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Commercial</h3>
               <p className="text-gray-600">Businesses and industries</p>
@@ -340,28 +350,28 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-br from-[#063B78] to-[#052A5C] text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
                 1
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Choose Your Tank</h3>
               <p className="text-gray-600">Browse our range and select the perfect capacity</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-br from-[#063B78] to-[#052A5C] text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Add to Cart</h3>
               <p className="text-gray-600">Add your selected tank to the shopping cart</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-br from-[#063B78] to-[#052A5C] text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
                 3
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Enter Your Details</h3>
               <p className="text-gray-600">Provide delivery information and contact details</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-br from-[#063B78] to-[#052A5C] text-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:scale-110 transition-transform">
                 4
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Confirm Your Order</h3>
@@ -372,7 +382,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 py-24 overflow-hidden">
+      <section className="relative bg-[#063B78] py-24 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -382,8 +392,8 @@ export default function Home() {
         </div>
         
         {/* Decorative Circles */}
-        <div className="absolute top-10 left-10 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-64 h-64 bg-[#FFD21F]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FFD21F]/5 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
@@ -394,7 +404,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/shop">
-              <Button size="lg" className="w-full sm:w-auto bg-white text-blue-600 hover:bg-blue-50 shadow-xl">
+              <Button size="lg" className="w-full sm:w-auto bg-[#FFD21F] text-[#063B78] hover:bg-[#E6BD1B] shadow-xl font-semibold">
                 <ShoppingBag className="mr-2 h-5 w-5" />
                 Shop Now
               </Button>
@@ -441,7 +451,7 @@ export default function Home() {
                   href="https://maps.app.goo.gl/z8aRhBMg5kM1bLdn8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center px-8 py-4 bg-[#063B78] text-white rounded-xl hover:bg-[#052A5C] transition-colors shadow-lg hover:shadow-xl"
                 >
                   <MapPin className="h-5 w-5 mr-2" />
                   Get Directions

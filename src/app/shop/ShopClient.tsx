@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import { products, type Product, getCategories, getSubcategories } from "@/lib/products";
+import { CATEGORY_CONFIG, SUBCATEGORY_CONFIG, getCategoryConfig, getSubcategoryConfig } from "@/lib/categories";
 import { Button } from "@/components/ui/button";
 import { Search, SlidersHorizontal } from "lucide-react";
 
@@ -182,24 +183,27 @@ export default function ShopClient() {
               >
                 All Products
               </button>
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => handleCategoryChange(category)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                    selectedCategory === category
-                      ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
+              {categories.map((category) => {
+                const config = getCategoryConfig(category);
+                return (
+                  <button
+                    key={category}
+                    onClick={() => handleCategoryChange(category)}
+                    className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                      selectedCategory === category
+                        ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    }`}
+                  >
+                    {config?.label || category}
+                  </button>
+                );
+              })}
             </div>
 
             {subcategories.length > 0 && (
               <>
-                <h3 className="font-semibold text-gray-900 mb-4 mt-6">Filter by {selectedCategory}</h3>
+                <h3 className="font-semibold text-gray-900 mb-4 mt-6">Filter by {getCategoryConfig(selectedCategory)?.label || selectedCategory}</h3>
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => setSelectedSubcategory("all")}
@@ -209,21 +213,24 @@ export default function ShopClient() {
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
                     }`}
                   >
-                    All {selectedCategory}
+                    All {getCategoryConfig(selectedCategory)?.label || selectedCategory}
                   </button>
-                  {subcategories.map((subcategory) => (
-                    <button
-                      key={subcategory}
-                      onClick={() => setSelectedSubcategory(subcategory)}
-                      className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                        selectedSubcategory === subcategory
-                          ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
-                      }`}
-                    >
-                      {subcategory}
-                    </button>
-                  ))}
+                  {subcategories.map((subcategory) => {
+                    const config = getSubcategoryConfig(subcategory);
+                    return (
+                      <button
+                        key={subcategory}
+                        onClick={() => setSelectedSubcategory(subcategory)}
+                        className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                          selectedSubcategory === subcategory
+                            ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                            : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                        }`}
+                      >
+                        {config?.label || subcategory}
+                      </button>
+                    );
+                  })}
                 </div>
               </>
             )}

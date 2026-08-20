@@ -56,7 +56,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <Link href="/shop" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6">
+        <Link href="/shop" className="inline-flex items-center text-[#063B78] hover:text-[#052A5C] mb-6">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Shop
         </Link>
@@ -160,7 +160,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
                     {formatPrice(product.originalPrice)}
                   </span>
                 )}
-                <span className="text-4xl font-bold text-blue-600">
+                <span className="text-4xl font-bold text-[#063B78]">
                   {formatPrice(product.salePrice || product.price)}
                 </span>
               </div>
@@ -255,20 +255,39 @@ export default function ProductPageClient({ product }: { product: Product }) {
               <div className="mb-6 bg-white rounded-lg shadow-md p-6">
                 <h3 className="font-semibold text-gray-900 mb-4">Select Color</h3>
                 <div className="flex flex-wrap gap-3">
-                  {availableColors.map((color) => (
-                    <button
-                      key={color}
-                      onClick={() => setSelectedColor(color)}
-                      className={`px-4 py-2 rounded-lg border-2 transition-all ${
-                        selectedColor === color
-                          ? 'border-blue-600 bg-blue-50 text-blue-700 font-medium'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-700'
-                      }`}
-                    >
-                      {color}
-                    </button>
-                  ))}
+                  {availableColors.map((color) => {
+                    const colorMap: Record<string, string> = {
+                      'Black': '#000000',
+                      'Blue': '#063B78',
+                      'Green': '#15803D',
+                      'Yellow': '#FFD21F',
+                      'Orange': '#F97316',
+                      'Red': '#D92D20'
+                    };
+                    const bgColor = colorMap[color] || '#666666';
+                    
+                    return (
+                      <button
+                        key={color}
+                        type="button"
+                        aria-label={`Select ${color}`}
+                        title={color}
+                        onClick={() => setSelectedColor(color)}
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#063B78] ${
+                          selectedColor === color
+                            ? 'ring-2 ring-offset-2 ring-[#063B78] scale-110'
+                            : 'hover:scale-105'
+                        }`}
+                        style={{ backgroundColor: bgColor }}
+                      >
+                        {selectedColor === color && (
+                          <span className="sr-only">Selected</span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
+                <p className="text-sm text-gray-500 mt-3">Selected: {selectedColor}</p>
               </div>
             )}
 
@@ -299,7 +318,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
               <Link href="/checkout" className="flex-1">
                 <Button 
                   size="lg" 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg"
+                  className="w-full bg-[#063B78] hover:bg-[#052A5C] text-white shadow-lg"
                   disabled={!product.inStock}
                 >
                   <ShoppingCart className="mr-2 h-5 w-5" />
@@ -309,7 +328,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="flex-1 border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+                className="flex-1 border-2 border-[#063B78] text-[#063B78] hover:bg-[#063B78]/5"
                 onClick={handleAddToCart}
                 disabled={!product.inStock}
               >

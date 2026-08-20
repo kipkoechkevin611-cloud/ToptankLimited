@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="">
             <h3 className="text-2xl font-bold mb-4">
-              Top<span className="text-blue-400">Tank</span>
+              Top<span className="text-[#FFD21F]">Tank</span>
             </h3>
             <p className="text-gray-400 mb-4 leading-relaxed">
               Premium triple-layer water tanks for homes, farms, and businesses across Kenya.
@@ -75,26 +75,26 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <Phone className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" />
+                <Phone className="h-5 w-5 mr-3 text-[#FFD21F] flex-shrink-0 mt-0.5" />
                 <a href="tel:+254731957540" className="text-gray-400 hover:text-white transition-colors">
                   +254 731 957 540
                 </a>
               </li>
               <li className="flex items-start">
-                <Mail className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" />
+                <Mail className="h-5 w-5 mr-3 text-[#FFD21F] flex-shrink-0 mt-0.5" />
                 <a href="mailto:info@toptank.co.ke" className="text-gray-400 hover:text-white transition-colors">
                   info@toptank.co.ke
                 </a>
               </li>
               <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="h-5 w-5 mr-3 text-[#FFD21F] flex-shrink-0 mt-0.5" />
                 <div className="text-gray-400">
                   <p className="leading-relaxed">Mombasa Road, P.O. Box 3115 (Nairobi), Athi River</p>
                   <a
                     href="https://maps.app.goo.gl/z8aRhBMg5kM1bLdn8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 text-sm mt-2 inline-block transition-colors"
+                    className="text-[#FFD21F] hover:text-[#E6BD1B] text-sm mt-2 inline-block transition-colors"
                   >
                     Open in Google Maps
                   </a>

@@ -35,14 +35,14 @@ export default function Toast({ show, product, quantity, selectedColor, onClose 
     <div className={`fixed bottom-4 right-4 z-50 transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
       <div className="bg-white rounded-xl shadow-2xl border border-gray-200 max-w-sm w-full overflow-hidden">
         {/* Header */}
-        <div className="bg-green-600 px-4 py-3 flex items-center justify-between">
+        <div className="bg-[#063B78] px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Check className="h-5 w-5 text-white" />
-            <span className="text-white font-semibold">Added to Cart!</span>
+            <span className="text-white font-semibold">Added to Cart ✓</span>
           </div>
           <button
             onClick={onClose}
-            className="text-white hover:text-green-200 transition-colors"
+            className="text-white hover:text-white/80 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -79,7 +79,7 @@ export default function Toast({ show, product, quantity, selectedColor, onClose 
                 </p>
               )}
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-blue-600">
+                <span className="text-sm font-bold text-[#063B78]">
                   {formatPrice(product.salePrice || product.price)}
                 </span>
                 <span className="text-xs text-gray-500">× {quantity}</span>
@@ -109,7 +109,7 @@ export default function Toast({ show, product, quantity, selectedColor, onClose 
           <Link href="/checkout" className="flex-1">
             <Button
               size="sm"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              className="w-full bg-[#063B78] hover:bg-[#052A5C] text-white"
             >
               Checkout
               <ArrowRight className="h-4 w-4 ml-1" />

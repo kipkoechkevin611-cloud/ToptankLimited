@@ -26,9 +26,9 @@ export default function Navbar() {
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white text-center py-2.5 px-4 text-xs sm:text-sm font-semibold">
+      <div className="bg-[#063B78] text-white text-center py-2.5 px-4 text-xs sm:text-sm font-semibold">
         <p className="flex items-center justify-center gap-2">
-          🔥 Flash Sale: 20% Off All Tanks & Industrial Products — Direct Delivery Available
+          🔥 Flash Sale: <span className="text-[#FFD21F]">20% OFF</span> All Tanks & Industrial Products — Direct Delivery Available
         </p>
       </div>
 
@@ -38,26 +38,26 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#063B78]">
                 TopTank
               </div>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              <Link href="/" className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-base">
+              <Link href="/" className="text-gray-900 hover:text-[#063B78] font-medium transition-colors text-base">
                 Home
               </Link>
-              <Link href="/shop" className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-base">
+              <Link href="/shop" className="text-gray-900 hover:text-[#063B78] font-medium transition-colors text-base">
                 Shop
               </Link>
-              <Link href="/about" className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-base">
+              <Link href="/about" className="text-gray-900 hover:text-[#063B78] font-medium transition-colors text-base">
                 About
               </Link>
-              <Link href="/faq" className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-base">
+              <Link href="/faq" className="text-gray-900 hover:text-[#063B78] font-medium transition-colors text-base">
                 FAQ
               </Link>
-              <Link href="/contact" className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-base">
+              <Link href="/contact" className="text-gray-900 hover:text-[#063B78] font-medium transition-colors text-base">
                 Contact
               </Link>
             </div>
@@ -65,15 +65,15 @@ export default function Navbar() {
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center space-x-4">
               <Link href="/search">
-                <Button variant="ghost" size="icon" className="hover:bg-blue-50">
+                <Button variant="ghost" size="icon" className="hover:bg-[#063B78]/5">
                   <Search className="h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/cart" className="relative">
-                <Button variant="ghost" size="icon" className="hover:bg-blue-50">
+                <Button variant="ghost" size="icon" className="hover:bg-[#063B78]/5">
                   <ShoppingCart className="h-5 w-5" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                    <span className="absolute -top-1 -right-1 bg-[#063B78] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
                       {cartCount}
                     </span>
                   )}
@@ -86,7 +86,7 @@ export default function Navbar() {
                 )}
               </Link>
               <Link href="/contact">
-                <Button variant="outline" size="sm" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                <Button variant="outline" size="sm" className="border-[#063B78] text-[#063B78] hover:bg-[#063B78]/5">
                   <Phone className="h-4 w-4 mr-2" />
                   Contact
                 </Button>
@@ -109,42 +109,42 @@ export default function Navbar() {
             <div className="px-4 pt-2 pb-6 space-y-1">
               <Link
                 href="/"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/shop"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Shop
               </Link>
               <Link
                 href="/categories"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Categories
               </Link>
               <Link
                 href="/about"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/faq"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
               </Link>
               <Link
                 href="/contact"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Contact
@@ -152,7 +152,7 @@ export default function Navbar() {
               <div className="border-t border-gray-200 pt-4 mt-4 space-y-1">
                 <Link
                   href="/search"
-                  className="flex items-center px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                  className="flex items-center px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   <Search className="h-5 w-5 mr-3" />
@@ -160,7 +160,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/cart"
-                  className="flex items-center px-4 py-3 text-base font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors"
+                  className="flex items-center px-4 py-3 text-base font-medium text-gray-900 hover:bg-[#063B78]/5 hover:text-[#063B78] rounded-lg transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   <ShoppingCart className="h-5 w-5 mr-3" />
