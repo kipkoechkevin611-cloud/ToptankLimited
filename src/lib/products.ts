@@ -204,7 +204,7 @@ export const products: Product[] = [
       "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
   {
     id: "conical-1500l",
@@ -233,7 +233,7 @@ export const products: Product[] = [
       "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
   {
     id: "conical-3000l",
@@ -262,7 +262,7 @@ export const products: Product[] = [
       "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
   {
     id: "conical-5000l",
@@ -291,7 +291,7 @@ export const products: Product[] = [
       "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
 
   // TANKS - Horizontal Septic Tank
@@ -323,7 +323,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
   {
     id: "septic-3000l",
@@ -353,7 +353,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
   {
     id: "septic-5000l",
@@ -383,7 +383,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
   {
     id: "septic-6000l",
@@ -413,7 +413,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
 
   // TANKS - Nestable Tank
@@ -444,7 +444,7 @@ export const products: Product[] = [
       "/TANKS/Nestable tank/Nestable Tank.jpg"
     ],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-200l",
@@ -473,7 +473,7 @@ export const products: Product[] = [
       "/TANKS/Nestable tank/Nestable Tank.jpg"
     ],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-300l",
@@ -502,7 +502,7 @@ export const products: Product[] = [
       "/TANKS/Nestable tank/Nestable Tank.jpg"
     ],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-500l",
@@ -531,7 +531,7 @@ export const products: Product[] = [
       "/TANKS/Nestable tank/Nestable Tank.jpg"
     ],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-1000l",
@@ -560,7 +560,7 @@ export const products: Product[] = [
       "/TANKS/Nestable tank/Nestable Tank.jpg"
     ],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-2000l",
@@ -589,7 +589,7 @@ export const products: Product[] = [
       "/TANKS/Nestable tank/Nestable Tank.jpg"
     ],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
 
   // TANKS - Rectangular Loft Tank
@@ -622,7 +622,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-300l",
@@ -653,7 +653,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-400l",
@@ -684,7 +684,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-460l",
@@ -715,7 +715,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-500l",
@@ -746,7 +746,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-690l",
@@ -777,7 +777,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-700l",
@@ -808,7 +808,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-850l",
@@ -839,7 +839,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-920l",
@@ -870,7 +870,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-1000l",
@@ -901,7 +901,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
 
   // TANKS - Roller Drum
@@ -1028,7 +1028,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-2000l",
@@ -1058,7 +1058,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-3000l",
@@ -1088,7 +1088,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-5000l",
@@ -1118,7 +1118,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-6000l",
@@ -1148,7 +1148,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
 
   // TANKS - Vertical Cylindrical Tank
@@ -1772,7 +1772,7 @@ export const products: Product[] = [
       "/bins/60litre Garbage Bin With Foot Pedal6.jpg",
       "/bins/60litre Garbage Bin With Foot Pedal7.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
 
@@ -1808,7 +1808,7 @@ export const products: Product[] = [
       "/bins/90litre Garbage Bin With Wheels & Handle4.jpg",
       "/bins/90litre Garbage Bin With Wheels & Handle5.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
 
@@ -1850,7 +1850,7 @@ export const products: Product[] = [
       "/bins/90litre Garbage Bin With Wheels, Handle & Foot Pedal10.jpg",
       "/bins/90litre Garbage Bin With Wheels, Handle & Foot Pedal11.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
 
@@ -1885,7 +1885,7 @@ export const products: Product[] = [
       "/bins/90litre Hexagonal Dustbin3.jpg",
       "/bins/90litre Hexagonal Dustbin4.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Dustbins"
   },
 
@@ -1919,7 +1919,7 @@ export const products: Product[] = [
       "/bins/90litre Round Dustbin2.jpg",
       "/bins/90litre Round Dustbin3.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Dustbins"
   },
 
@@ -1951,7 +1951,7 @@ export const products: Product[] = [
       "/bins/100l Standard Cylindrical Tank.jpg",
       "/bins/100l Standard Cylindrical Tank5.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
 
@@ -1986,7 +1986,7 @@ export const products: Product[] = [
       "/bins/120l Standard Cylindrical Tank3.jpg",
       "/bins/120l Standard Cylindrical Tank4.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
 
@@ -2024,7 +2024,7 @@ export const products: Product[] = [
       "/bins/180l Standard Cylindrical Tank7.jpg",
       "/bins/180l Standard Cylindrical Tank8.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
 
@@ -2064,7 +2064,7 @@ export const products: Product[] = [
       "/bins/240l Standard Cylindrical Tank8.jpg",
       "/bins/240l Standard Cylindrical Tank9.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
 
@@ -2102,7 +2102,7 @@ export const products: Product[] = [
       "/bins/360l Standard Cylindrical Tank6.jpg",
       "/bins/360l Standard Cylindrical Tank7.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
 
@@ -2138,7 +2138,7 @@ export const products: Product[] = [
       "/bins/750litre Garbage Bin with Wheels4.jpg",
       "/bins/750litre Garbage Bin with Wheels5.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
 
@@ -2774,7 +2774,7 @@ export const products: Product[] = [
       "/bins/120l Standard Cylindrical Tank3.jpg",
       "/bins/120l Standard Cylindrical Tank4.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -2809,7 +2809,7 @@ export const products: Product[] = [
       "/bins/180l Standard Cylindrical Tank7.jpg",
       "/bins/180l Standard Cylindrical Tank8.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -2846,7 +2846,7 @@ export const products: Product[] = [
       "/bins/240l Standard Cylindrical Tank8.jpg",
       "/bins/240l Standard Cylindrical Tank9.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -2881,7 +2881,7 @@ export const products: Product[] = [
       "/bins/360l Standard Cylindrical Tank6.jpg",
       "/bins/360l Standard Cylindrical Tank7.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
 
@@ -2921,7 +2921,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-300l",
@@ -2958,7 +2958,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-500l",
@@ -2995,7 +2995,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-1000l",
@@ -3035,7 +3035,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-1500l",
@@ -3072,7 +3072,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-1900l",
@@ -3109,7 +3109,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-2000l",
@@ -3149,7 +3149,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-2300l",
@@ -3186,7 +3186,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-2500l",
@@ -3226,7 +3226,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical",
+    subcategory: "Vertical Cylindrical",
     priority: 1
   },
   {
@@ -3267,7 +3267,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-3200l",
@@ -3304,7 +3304,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-3500l",
@@ -3341,7 +3341,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-4200l",
@@ -3378,7 +3378,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-4600l",
@@ -3415,7 +3415,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-5000l",
@@ -3455,7 +3455,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-6000l",
@@ -3495,7 +3495,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-7500l",
@@ -3532,7 +3532,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-8000l",
@@ -3572,7 +3572,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-10000l",
@@ -3612,7 +3612,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-12000l",
@@ -3649,7 +3649,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-15000l",
@@ -3686,7 +3686,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
   {
     id: "deluxe-24000l",
@@ -3726,7 +3726,7 @@ export const products: Product[] = [
       "/TANKS/deluxe cylindrical tank/TopTank_Tanks-Blue_2-99-100x100.jpeg"
     ],
     category: "TANKS",
-    subcategory: "Deluxe Cylindrical"
+    subcategory: "Vertical Cylindrical"
   },
 
   // TANKS - Vertical Cylindrical Tanks
@@ -4187,7 +4187,7 @@ export const products: Product[] = [
     image: "/TANKS/Nestable tank/Nestable Tank.jpg",
     images: ["/TANKS/Nestable tank/Nestable Tank.jpg"],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-200l",
@@ -4212,7 +4212,7 @@ export const products: Product[] = [
     image: "/TANKS/Nestable tank/Nestable Tank.jpg",
     images: ["/TANKS/Nestable tank/Nestable Tank.jpg"],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-300l",
@@ -4237,7 +4237,7 @@ export const products: Product[] = [
     image: "/TANKS/Nestable tank/Nestable Tank.jpg",
     images: ["/TANKS/Nestable tank/Nestable Tank.jpg"],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-500l",
@@ -4262,7 +4262,7 @@ export const products: Product[] = [
     image: "/TANKS/Nestable tank/Nestable Tank.jpg",
     images: ["/TANKS/Nestable tank/Nestable Tank.jpg"],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-1000l",
@@ -4287,7 +4287,7 @@ export const products: Product[] = [
     image: "/TANKS/Nestable tank/Nestable Tank.jpg",
     images: ["/TANKS/Nestable tank/Nestable Tank.jpg"],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
   {
     id: "nestable-2000l",
@@ -4312,7 +4312,7 @@ export const products: Product[] = [
     image: "/TANKS/Nestable tank/Nestable Tank.jpg",
     images: ["/TANKS/Nestable tank/Nestable Tank.jpg"],
     category: "TANKS",
-    subcategory: "Nestable"
+    subcategory: "Nestable tank"
   },
 
   // TANKS - Roller Drum
@@ -4436,7 +4436,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-300l",
@@ -4466,7 +4466,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-400l",
@@ -4496,7 +4496,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-460l",
@@ -4526,7 +4526,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-500l",
@@ -4556,7 +4556,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-690l",
@@ -4586,7 +4586,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-700l",
@@ -4616,7 +4616,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-850l",
@@ -4646,7 +4646,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-920l",
@@ -4676,7 +4676,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
   {
     id: "loft-1000l",
@@ -4706,7 +4706,7 @@ export const products: Product[] = [
       "/TANKS/Rectangular Loft Tank/Rectangular Loft Tank2.jpg"
     ],
     category: "TANKS",
-    subcategory: "Rectangular Loft"
+    subcategory: "Rectangular Loft Tank"
   },
 
   // TANKS - Underground Spherical Tanks
@@ -4735,7 +4735,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-2000l",
@@ -4762,7 +4762,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-3000l",
@@ -4789,7 +4789,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-5000l",
@@ -4817,7 +4817,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
   {
     id: "spherical-6000l",
@@ -4845,7 +4845,7 @@ export const products: Product[] = [
       "/TANKS/Underground Spherical Tank/SPHERICAL-UNDERGROUND-TANK_2-scaled-1.jpg"
     ],
     category: "TANKS",
-    subcategory: "Underground Spherical"
+    subcategory: "Underground Spherical Tank"
   },
 
   // TANKS - Horizontal Septic Tanks
@@ -4874,7 +4874,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
   {
     id: "septic-3000l",
@@ -4901,7 +4901,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
   {
     id: "septic-5000l",
@@ -4928,7 +4928,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
   {
     id: "septic-6000l",
@@ -4955,7 +4955,7 @@ export const products: Product[] = [
       "/TANKS/Horizontal Septic Tank/SEPTIC-TANK_3-scaled-1-1000x1000.jpg"
     ],
     category: "TANKS",
-    subcategory: "Horizontal Septic"
+    subcategory: "Horizontal Septic Tank"
   },
 
   // TANKS - Conical Hopper Tanks
@@ -4981,7 +4981,7 @@ export const products: Product[] = [
     image: "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg",
     images: ["/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
   {
     id: "conical-1500l",
@@ -5005,7 +5005,7 @@ export const products: Product[] = [
     image: "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg",
     images: ["/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
   {
     id: "conical-3000l",
@@ -5029,7 +5029,7 @@ export const products: Product[] = [
     image: "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg",
     images: ["/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
   {
     id: "conical-5000l",
@@ -5053,7 +5053,7 @@ export const products: Product[] = [
     image: "/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg",
     images: ["/TANKS/Conical Hopper Tank/canonical-500x500-1.jpg"],
     category: "TANKS",
-    subcategory: "Conical Hopper"
+    subcategory: "Conical Hopper Tank"
   },
 
   // LIFESTYLE - 30L TopKool Cooler Box
@@ -6165,7 +6165,7 @@ export const products: Product[] = [
       "/bins/60litre Garbage Bin With Foot Pedal6.jpg",
       "/bins/60litre Garbage Bin With Foot Pedal7.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - 750litre Garbage Bin with Wheels
@@ -6197,7 +6197,7 @@ export const products: Product[] = [
       "/bins/750litre Garbage Bin with Wheels4.jpg",
       "/bins/750litre Garbage Bin with Wheels5.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - 90litre Garbage Bin With Wheels & Handle
@@ -6229,7 +6229,7 @@ export const products: Product[] = [
       "/bins/90litre Garbage Bin With Wheels & Handle4.jpg",
       "/bins/90litre Garbage Bin With Wheels & Handle5.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - 90litre Garbage Bin With Wheels, Handle & Foot Pedal
@@ -6267,7 +6267,7 @@ export const products: Product[] = [
       "/bins/90litre Garbage Bin With Wheels, Handle & Foot Pedal10.jpg",
       "/bins/90litre Garbage Bin With Wheels, Handle & Foot Pedal11.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - 90litre Hexagonal Dustbin
@@ -6298,7 +6298,7 @@ export const products: Product[] = [
       "/bins/90litre Hexagonal Dustbin3.jpg",
       "/bins/90litre Hexagonal Dustbin4.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Dustbins"
   },
   // BINS - 90litre Round Dustbin
@@ -6328,7 +6328,7 @@ export const products: Product[] = [
       "/bins/90litre Round Dustbin2.jpg",
       "/bins/90litre Round Dustbin3.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Dustbins"
   },
   // BINS - Garbage Bin with Wheels (120L)
@@ -6360,7 +6360,7 @@ export const products: Product[] = [
       "/bins/Garbage Bin with Wheels5.jpg",
       "/bins/Garbage Bin with Wheels6.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - Garbage Bin with Wheels (180L)
@@ -6392,7 +6392,7 @@ export const products: Product[] = [
       "/bins/Garbage Bin with Wheels5.jpg",
       "/bins/Garbage Bin with Wheels6.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - Garbage Bin with Wheels (240L)
@@ -6424,7 +6424,7 @@ export const products: Product[] = [
       "/bins/Garbage Bin with Wheels5.jpg",
       "/bins/Garbage Bin with Wheels6.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - Garbage Bin with Wheels (360L)
@@ -6456,7 +6456,7 @@ export const products: Product[] = [
       "/bins/Garbage Bin with Wheels5.jpg",
       "/bins/Garbage Bin with Wheels6.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - Garbage Bin with Wheels (1,100L)
@@ -6488,7 +6488,7 @@ export const products: Product[] = [
       "/bins/Garbage Bin with Wheels5.jpg",
       "/bins/Garbage Bin with Wheels6.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Garbage Bins"
   },
   // BINS - Standard Cylindrical Tanks (various sizes)
@@ -6516,7 +6516,7 @@ export const products: Product[] = [
       "/bins/100l Standard Cylindrical Tank.jpg",
       "/bins/100l Standard Cylindrical Tank5.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -6546,7 +6546,7 @@ export const products: Product[] = [
       "/bins/120l Standard Cylindrical Tank3.jpg",
       "/bins/120l Standard Cylindrical Tank4.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -6581,7 +6581,7 @@ export const products: Product[] = [
       "/bins/180l Standard Cylindrical Tank9.jpg",
       "/bins/180l Standard Cylindrical Tank10.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -6616,7 +6616,7 @@ export const products: Product[] = [
       "/bins/240l Standard Cylindrical Tank8.jpg",
       "/bins/240l Standard Cylindrical Tank9.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   },
   {
@@ -6651,7 +6651,7 @@ export const products: Product[] = [
       "/bins/360l Standard Cylindrical Tank8.jpg",
       "/bins/360l Standard Cylindrical Tank9.jpg"
     ],
-    category: "bins",
+    category: "BINS",
     subcategory: "Cylindrical Tanks"
   }
 ];
