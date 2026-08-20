@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   // Filter for specific Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
-  const allowedCapacities = [1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 16000, 20000, 24000];
+  const allowedCapacities = [1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 15000, 16000, 20000, 24000];
   const verticalCylindricalTanks = products.filter(p =>
     p.category === 'TANKS' &&
     p.subcategory === 'Vertical Cylindrical' &&
