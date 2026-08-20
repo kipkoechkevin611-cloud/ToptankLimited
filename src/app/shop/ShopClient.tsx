@@ -3,10 +3,12 @@
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
-import { products, type Product, getCategories, getSubcategories } from "@/lib/products";
+import { products, type Product, getCategories, getSubcategories, formatPrice } from "@/lib/products";
 import { CATEGORY_CONFIG, SUBCATEGORY_CONFIG, getCategoryConfig, getSubcategoryConfig } from "@/lib/categories";
 import { Button } from "@/components/ui/button";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function ShopClient() {
   const searchParams = useSearchParams();
@@ -17,6 +19,7 @@ export default function ShopClient() {
   const [selectedCapacity, setSelectedCapacity] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("price-asc");
   const [showFilters, setShowFilters] = useState(false);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
   // Read category from URL params on mount and when URL changes
   useEffect(() => {
@@ -48,14 +51,20 @@ export default function ShopClient() {
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...products];
 
-    // Filter by search query
+    // Filter by search query - enhanced for size/capacity keywords
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
+      const numericQuery = query.replace(/[^0-9]/g, ''); // Extract numbers only
+      
       filtered = filtered.filter(
         (product) =>
           product.name.toLowerCase().includes(query) ||
           (product.capacity && product.capacity.toString().includes(query)) ||
           (product.capacity && product.capacity.toString().replace(/,/g, "").includes(query)) ||
+          (product.capacity && numericQuery && product.capacity.toString().replace(/,/g, "") === numericQuery) ||
+          (product.capacity && numericQuery && product.capacity.toString().replace(/,/g, "").includes(numericQuery)) ||
+          (product.capacity && `${product.capacity}L`.toLowerCase().includes(query)) ||
+          (product.capacity && `${product.capacity.toLocaleString()}L`.toLowerCase().includes(query)) ||
           product.description.toLowerCase().includes(query) ||
           product.category.toLowerCase().includes(query) ||
           (product.subcategory && product.subcategory.toLowerCase().includes(query))
@@ -116,6 +125,25 @@ export default function ShopClient() {
     return filtered;
   }, [searchQuery, selectedCategory, selectedSubcategory, selectedCapacity, sortBy]);
 
+  // Search suggestions for auto-suggest dropdown
+  const searchSuggestions = useMemo(() => {
+    if (!searchQuery || searchQuery.length < 2) return [];
+    const query = searchQuery.toLowerCase();
+    const numericQuery = query.replace(/[^0-9]/g, '');
+    
+    return products
+      .filter((product) =>
+        product.name.toLowerCase().includes(query) ||
+        (product.capacity && product.capacity.toString().includes(query)) ||
+        (product.capacity && product.capacity.toString().replace(/,/g, "").includes(query)) ||
+        (product.capacity && numericQuery && product.capacity.toString().replace(/,/g, "") === numericQuery) ||
+        (product.capacity && numericQuery && product.capacity.toString().replace(/,/g, "").includes(numericQuery)) ||
+        (product.capacity && `${product.capacity}L`.toLowerCase().includes(query)) ||
+        (product.capacity && `${product.capacity.toLocaleString()}L`.toLowerCase().includes(query))
+      )
+      .slice(0, 6); // Limit to 6 suggestions
+  }, [searchQuery]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -137,11 +165,56 @@ export default function ShopClient() {
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Search products by name or size (e.g., 2500L, 5000)..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-50 focus:bg-white transition-all"
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSearchDropdown(e.target.value.length >= 2);
+                }}
+                onFocus={() => setShowSearchDropdown(searchQuery.length >= 2)}
+                onBlur={() => setTimeout(() => setShowSearchDropdown(false), 200)}
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#063B78] focus:border-transparent text-black bg-gray-50 focus:bg-white transition-all"
               />
+              
+              {/* Auto-suggest Dropdown */}
+              {showSearchDropdown && searchSuggestions.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 z-50 max-h-96 overflow-y-auto">
+                  {searchSuggestions.map((product) => (
+                    <Link
+                      key={product.id}
+                      href={`/product/${product.slug}`}
+                      className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+                      onClick={() => {
+                        setSearchQuery("");
+                        setShowSearchDropdown(false);
+                      }}
+                    >
+                      <div className="w-16 h-16 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={64}
+                          height={64}
+                          className="w-full h-full object-contain p-2"
+                          unoptimized
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-gray-900 text-sm line-clamp-1">{product.name}</p>
+                        {product.capacity && (
+                          <p className="text-xs text-gray-500">{product.capacity.toLocaleString()}L</p>
+                        )}
+                      </div>
+                      <div className="text-right">
+                        {product.onSale && product.originalPrice && (
+                          <p className="text-xs text-gray-400 line-through">{formatPrice(product.originalPrice)}</p>
+                        )}
+                        <p className="font-bold text-[#063B78]">{formatPrice(product.salePrice || product.price)}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Filter Toggle (Mobile) */}
@@ -291,7 +364,7 @@ export default function ShopClient() {
 
         {/* Products Grid */}
         {filteredAndSortedProducts.length > 0 ? (
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {filteredAndSortedProducts.map((product) => (
               <ProductCard 
                 key={product.id} 

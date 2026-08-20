@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { products, getCategories } from "@/lib/products";
-import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check, Award } from "lucide-react";
+import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check, Award, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   // Filter for Vertical Cylindrical Tanks and sort by priority, then take first 4
@@ -22,6 +23,22 @@ export default function Home() {
   const featuredProducts = verticalCylindricalTanks.slice(0, 4);
   const { addToCart } = useCart();
   const categories = getCategories();
+
+  // Hero carousel state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const heroProducts = [
+    verticalCylindricalTanks[0], // 5000L or similar
+    ...products.filter(p => p.category === 'TANKS' && p.subcategory === 'Rectangular Loft').slice(0, 1),
+    ...products.filter(p => p.category === 'bins').slice(0, 1),
+    ...products.filter(p => p.category === 'Road Safety & Industrial').slice(0, 1)
+  ].filter(Boolean).slice(0, 4);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroProducts.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [heroProducts.length]);
 
   const categoryIcons: Record<string, any> = {
     "TANKS": Droplets,
@@ -41,7 +58,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
+      {/* Hero Section - Text First Layout */}
       <section className="relative bg-[#063B78] py-16 md:py-24 lg:py-32 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -57,7 +74,8 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
+            {/* Text Content - Left Column */}
+            <div className="text-white order-2 md:order-1">
               <div className="inline-block bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/20">
                 <span className="text-sm font-semibold">🇰🇪 Proudly Made in Kenya</span>
               </div>
@@ -67,7 +85,7 @@ export default function Home() {
               <p className="text-lg md:text-xl mb-8 text-blue-100 leading-relaxed max-w-xl">
                 Premium triple-layer water tanks and industrial products built for Kenyan homes, farms, institutions and businesses.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link href="/shop?category=TANKS">
                   <Button size="lg" className="w-full sm:w-auto bg-[#FFD21F] text-[#063B78] hover:bg-[#E6BD1B] shadow-xl font-semibold">
                     <ShoppingBag className="mr-2 h-5 w-5" />
@@ -82,7 +100,7 @@ export default function Home() {
               </div>
               
               {/* Trust Indicators */}
-              <div className="flex flex-wrap gap-6 mt-10 pt-8 border-t border-white/20">
+              <div className="flex flex-wrap gap-6 pt-8 border-t border-white/20">
                 <div className="flex items-center gap-2">
                   <Shield className="h-5 w-5 text-[#FFD21F]" />
                   <span className="text-sm font-medium">Triple-Layer Protection</span>
@@ -101,18 +119,58 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center relative order-first md:order-last">
-              {/* Tank Image */}
+
+            {/* Rotating Product Carousel - Right Column */}
+            <div className="flex justify-center relative order-1 md:order-2">
               <div className="relative w-72 h-96 md:w-96 md:h-[32rem]">
-                <div className="absolute inset-0 bg-white/5 rounded-3xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 overflow-hidden">
-                  <img 
-                    src={featuredProducts[0]?.image || "/TANKS/verticalcylindrical tank/Deluxe Cylindrical Tank.jpeg"} 
-                    alt="TopTank Water Tank"
-                    className="w-full h-full object-contain p-8 md:p-12"
-                  />
+                <div className="absolute inset-0 bg-white/5 rounded-2xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 overflow-hidden">
+                  {heroProducts.length > 0 && heroProducts[currentSlide] ? (
+                    <img 
+                      src={heroProducts[currentSlide].image} 
+                      alt={heroProducts[currentSlide].name}
+                      className="w-full h-full object-contain p-8 md:p-12 transition-opacity duration-500"
+                      key={currentSlide}
+                    />
+                  ) : (
+                    <img 
+                      src="/TANKS/verticalcylindrical tank/Deluxe Cylindrical Tank.jpeg" 
+                      alt="TopTank Water Tank"
+                      className="w-full h-full object-contain p-8 md:p-12"
+                    />
+                  )}
                 </div>
                 {/* Glow Effect */}
-                <div className="absolute -inset-4 bg-[#FFD21F]/10 rounded-3xl blur-2xl -z-10"></div>
+                <div className="absolute -inset-4 bg-[#FFD21F]/10 rounded-2xl blur-2xl -z-10"></div>
+                
+                {/* Carousel Navigation */}
+                {heroProducts.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setCurrentSlide((prev) => (prev - 1 + heroProducts.length) % heroProducts.length)}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all hover:scale-110"
+                    >
+                      <ChevronLeft className="h-6 w-6 text-gray-800" />
+                    </button>
+                    <button
+                      onClick={() => setCurrentSlide((prev) => (prev + 1) % heroProducts.length)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all hover:scale-110"
+                    >
+                      <ChevronRight className="h-6 w-6 text-gray-800" />
+                    </button>
+                    {/* Carousel Dots */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {heroProducts.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentSlide(index)}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            currentSlide === index ? 'bg-white w-6' : 'bg-white/50'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

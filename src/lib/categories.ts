@@ -8,40 +8,40 @@
  */
 
 export type CategoryId =
-  | "tanks"
+  | "TANKS"
   | "bins"
-  | "road-safety-industrial"
-  | "sanitation"
-  | "lifestyle";
+  | "Road Safety & Industrial"
+  | "Sanitation"
+  | "Lifestyle";
 
 export type TankSubcategory =
-  | "vertical-cylindrical"
-  | "horizontal-septic"
-  | "rectangular-loft"
-  | "underground-spherical"
-  | "nestable"
-  | "conical-hopper"
-  | "barrel"
-  | "roller-drum";
+  | "Vertical Cylindrical"
+  | "Horizontal Septic Tank"
+  | "Rectangular Loft Tank"
+  | "Underground Spherical Tank"
+  | "Nestable tank"
+  | "Conical Hopper Tank"
+  | "Barrel"
+  | "Roller Drum";
 
 export type BinSubcategory =
-  | "garbage-bins"
-  | "dustbins"
-  | "cylindrical-tanks";
+  | "Garbage Bins"
+  | "Dustbins"
+  | "Cylindrical Tanks";
 
 export type RoadSafetySubcategory =
-  | "pallets"
-  | "road-barriers"
-  | "traffic-control";
+  | "Pallets"
+  | "Road Barriers"
+  | "Traffic Control";
 
 export type SanitationSubcategory =
-  | "handwash-basins"
-  | "manholes"
-  | "latrine-slabs";
+  | "Handwash Basins"
+  | "Manholes"
+  | "Pit Latrine Slabs";
 
 export type LifestyleSubcategory =
-  | "cooler-boxes"
-  | "planters";
+  | "Cooler Boxes"
+  | "Planters";
 
 export interface CategoryConfig {
   id: CategoryId;
@@ -63,20 +63,20 @@ export interface SubcategoryConfig {
  * Canonical Category Configuration
  */
 export const CATEGORY_CONFIG: Record<CategoryId, CategoryConfig> = {
-  tanks: {
-    id: "tanks",
+  TANKS: {
+    id: "TANKS",
     label: "Water Tanks",
     description: "Premium triple-layer water storage tanks for homes, farms, and businesses",
     imageDirectory: "/TANKS/",
     subcategories: [
-      "vertical-cylindrical",
-      "horizontal-septic",
-      "rectangular-loft",
-      "underground-spherical",
-      "nestable",
-      "conical-hopper",
-      "barrel",
-      "roller-drum"
+      "Vertical Cylindrical",
+      "Horizontal Septic Tank",
+      "Rectangular Loft Tank",
+      "Underground Spherical Tank",
+      "Nestable tank",
+      "Conical Hopper Tank",
+      "Barrel",
+      "Roller Drum"
     ],
     icon: "droplets"
   },
@@ -85,31 +85,31 @@ export const CATEGORY_CONFIG: Record<CategoryId, CategoryConfig> = {
     label: "Bins",
     description: "Durable waste management solutions for residential and commercial use",
     imageDirectory: "/bins/",
-    subcategories: ["garbage-bins", "dustbins", "cylindrical-tanks"],
+    subcategories: ["Garbage Bins", "Dustbins", "Cylindrical Tanks"],
     icon: "trash"
   },
-  "road-safety-industrial": {
-    id: "road-safety-industrial",
+  "Road Safety & Industrial": {
+    id: "Road Safety & Industrial",
     label: "Road Safety & Industrial",
     description: "Industrial safety equipment and road traffic control solutions",
     imageDirectory: "/Road Safety & Industrial/",
-    subcategories: ["pallets", "road-barriers", "traffic-control"],
+    subcategories: ["Pallets", "Road Barriers", "Traffic Control"],
     icon: "shield"
   },
-  sanitation: {
-    id: "sanitation",
+  Sanitation: {
+    id: "Sanitation",
     label: "Sanitation",
-    description: "Sanitation infrastructure for public health and hygiene",
+    description: "Sanitation solutions for hygiene and waste management",
     imageDirectory: "/Sanitation/",
-    subcategories: ["handwash-basins", "manholes", "latrine-slabs"],
+    subcategories: ["Handwash Basins", "Manholes", "Pit Latrine Slabs"],
     icon: "heart"
   },
-  lifestyle: {
-    id: "lifestyle",
+  Lifestyle: {
+    id: "Lifestyle",
     label: "Lifestyle",
     description: "Lifestyle products for modern living",
     imageDirectory: "/Lifestyle/",
-    subcategories: ["cooler-boxes", "planters"],
+    subcategories: ["Cooler Boxes", "Planters"],
     icon: "leaf"
   }
 };
@@ -122,49 +122,49 @@ export const SUBCATEGORY_CONFIG: Record<string, SubcategoryConfig> = {
   "vertical-cylindrical": {
     id: "vertical-cylindrical",
     label: "Vertical Cylindrical Tanks",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/verticalcylindrical tank/"
   },
   "horizontal-septic": {
     id: "horizontal-septic",
     label: "Horizontal Septic Tanks",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Horizontal Septic Tank/"
   },
   "rectangular-loft": {
     id: "rectangular-loft",
     label: "Rectangular Loft Tanks",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Rectangular Loft Tank/"
   },
   "underground-spherical": {
     id: "underground-spherical",
     label: "Underground Spherical Tanks",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Underground Spherical Tank/"
   },
   "nestable": {
     id: "nestable",
     label: "Nestable Tanks",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Nestable tank/"
   },
   "conical-hopper": {
     id: "conical-hopper",
     label: "Conical Hopper Tanks",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Conical Hopper Tank/"
   },
   "barrel": {
     id: "barrel",
     label: "Barrels",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Barrel/"
   },
   "roller-drum": {
     id: "roller-drum",
     label: "Roller Drums",
-    parent: "tanks",
+    parent: "TANKS",
     imageDirectory: "/TANKS/Roller Drum/"
   },
   // Bin Subcategories
@@ -190,51 +190,51 @@ export const SUBCATEGORY_CONFIG: Record<string, SubcategoryConfig> = {
   "pallets": {
     id: "pallets",
     label: "Pallets",
-    parent: "road-safety-industrial",
+    parent: "Road Safety & Industrial",
     imageDirectory: "/Road Safety & Industrial/"
   },
   "road-barriers": {
     id: "road-barriers",
     label: "Road Barriers",
-    parent: "road-safety-industrial",
+    parent: "Road Safety & Industrial",
     imageDirectory: "/Road Safety & Industrial/"
   },
   "traffic-control": {
     id: "traffic-control",
     label: "Traffic Control",
-    parent: "road-safety-industrial",
+    parent: "Road Safety & Industrial",
     imageDirectory: "/Road Safety & Industrial/"
   },
   // Sanitation Subcategories
   "handwash-basins": {
     id: "handwash-basins",
     label: "Handwash Basins",
-    parent: "sanitation",
+    parent: "Sanitation",
     imageDirectory: "/Sanitation/"
   },
   "manholes": {
     id: "manholes",
     label: "Manholes",
-    parent: "sanitation",
+    parent: "Sanitation",
     imageDirectory: "/Sanitation/"
   },
   "latrine-slabs": {
     id: "latrine-slabs",
     label: "Latrine Slabs",
-    parent: "sanitation",
+    parent: "Sanitation",
     imageDirectory: "/Sanitation/"
   },
   // Lifestyle Subcategories
   "cooler-boxes": {
     id: "cooler-boxes",
     label: "Cooler Boxes",
-    parent: "lifestyle",
+    parent: "Lifestyle",
     imageDirectory: "/Lifestyle/"
   },
   "planters": {
     id: "planters",
     label: "Planters",
-    parent: "lifestyle",
+    parent: "Lifestyle",
     imageDirectory: "/Lifestyle/"
   }
 };
@@ -273,14 +273,14 @@ export function normalizeCategoryId(category: string): CategoryId {
   const normalized = category.toLowerCase().trim();
   
   const mapping: Record<string, CategoryId> = {
-    "tanks": "tanks",
+    "tanks": "TANKS",
     "bins": "bins",
-    "road safety & industrial": "road-safety-industrial",
-    "sanitation": "sanitation",
-    "lifestyle": "lifestyle"
+    "road safety & industrial": "Road Safety & Industrial",
+    "sanitation": "Sanitation",
+    "lifestyle": "Lifestyle"
   };
   
-  return mapping[normalized] || "tanks";
+  return mapping[normalized] || "TANKS";
 }
 
 /**
@@ -291,7 +291,7 @@ export function normalizeSubcategoryId(subcategory: string, category: string): s
   const categoryId = normalizeCategoryId(category);
   
   // Tank subcategory mappings
-  if (categoryId === "tanks") {
+  if (categoryId === "TANKS") {
     const tankMapping: Record<string, string> = {
       "vertical cylindrical": "vertical-cylindrical",
       "horizontal septic tank": "horizontal-septic",
@@ -316,7 +316,7 @@ export function normalizeSubcategoryId(subcategory: string, category: string): s
   }
   
   // Road Safety subcategory mappings
-  if (categoryId === "road-safety-industrial") {
+  if (categoryId === "Road Safety & Industrial") {
     const safetyMapping: Record<string, string> = {
       "pallets": "pallets",
       "road barriers": "road-barriers",
@@ -326,7 +326,7 @@ export function normalizeSubcategoryId(subcategory: string, category: string): s
   }
   
   // Sanitation subcategory mappings
-  if (categoryId === "sanitation") {
+  if (categoryId === "Sanitation") {
     const sanitationMapping: Record<string, string> = {
       "handwash basins": "handwash-basins",
       "manholes": "manholes",
@@ -336,7 +336,7 @@ export function normalizeSubcategoryId(subcategory: string, category: string): s
   }
   
   // Lifestyle subcategory mappings
-  if (categoryId === "lifestyle") {
+  if (categoryId === "Lifestyle") {
     const lifestyleMapping: Record<string, string> = {
       "cooler boxes": "cooler-boxes",
       "planters": "planters"
