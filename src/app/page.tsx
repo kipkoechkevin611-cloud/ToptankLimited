@@ -8,8 +8,8 @@ import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Buil
 import { useCart } from "@/contexts/CartContext";
 
 export default function Home() {
-  // Filter for specific Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
-  const allowedCapacities = [1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 15000, 16000, 20000, 24000];
+  // Filter for all Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
+  const allowedCapacities = [100, 200, 300, 500, 1000, 1350, 1500, 1900, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000, 12000, 15000, 16000, 20000, 24000];
   const verticalCylindricalTanks = products.filter(p =>
     p.category === 'TANKS' &&
     p.subcategory === 'Vertical Cylindrical' &&
