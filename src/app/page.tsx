@@ -9,18 +9,15 @@ import { useCart } from "@/contexts/CartContext";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  // Filter for Vertical Cylindrical Tanks and sort by priority, then take first 4
-  const verticalCylindricalTanks = products.filter(p => 
+  // Filter for Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
+  const verticalCylindricalTanks = products.filter(p =>
     p.category === 'TANKS' && p.subcategory === 'Vertical Cylindrical'
   ).sort((a, b) => {
-    const priorityA = a.priority || 0;
-    const priorityB = b.priority || 0;
-    if (priorityA !== priorityB) {
-      return priorityB - priorityA; // Higher priority first
-    }
-    return 0;
+    const priceA = a.salePrice || a.price;
+    const priceB = b.salePrice || b.price;
+    return priceB - priceA; // Higher price first (descending)
   });
-  const featuredProducts = verticalCylindricalTanks.slice(0, 4);
+  const featuredProducts = verticalCylindricalTanks; // Show ALL vertical tanks
   const { addToCart } = useCart();
   const categories = getCategories();
 

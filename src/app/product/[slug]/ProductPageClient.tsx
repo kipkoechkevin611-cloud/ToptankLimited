@@ -16,6 +16,14 @@ export default function ProductPageClient({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [showToast, setShowToast] = useState(false);
+  const [colorError, setColorError] = useState<string>("");
+  const [showCredentialsModal, setShowCredentialsModal] = useState(false);
+  const [credentials, setCredentials] = useState({
+    fullName: "",
+    phone: "",
+    address: "",
+    color: ""
+  });
 
   // Ensure images array exists and has at least one image
   const productImages = product.images && product.images.length > 0 ? product.images : [product.image];
@@ -36,8 +44,41 @@ export default function ProductPageClient({ product }: { product: Product }) {
   }, [availableColors]);
 
   const handleAddToCart = () => {
+    if (availableColors.length > 0 && !selectedColor) {
+      setColorError("Please select a color before adding to cart");
+      return;
+    }
+    setColorError("");
     addToCart(product, quantity, selectedColor || undefined);
     setShowToast(true);
+  };
+
+  const handleOrderNow = () => {
+    if (availableColors.length > 0 && !selectedColor) {
+      setColorError("Please select a color before ordering");
+      return;
+    }
+    setColorError("");
+    setCredentials({
+      fullName: "",
+      phone: "",
+      address: "",
+      color: selectedColor
+    });
+    setShowCredentialsModal(true);
+  };
+
+  const handleCredentialsSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!credentials.fullName || !credentials.phone || !credentials.address) {
+      alert("Please fill in all required fields");
+      return;
+    }
+    // Add to cart with credentials
+    addToCart(product, quantity, selectedColor || undefined);
+    setShowCredentialsModal(false);
+    // Navigate to checkout with credentials
+    window.location.href = `/checkout?name=${encodeURIComponent(credentials.fullName)}&phone=${encodeURIComponent(credentials.phone)}&address=${encodeURIComponent(credentials.address)}&color=${encodeURIComponent(credentials.color)}`;
   };
 
   const handleQuantityChange = (delta: number) => {
@@ -251,9 +292,9 @@ export default function ProductPageClient({ product }: { product: Product }) {
             )}
 
             {/* Color Selection */}
-            {availableColors.length > 1 && (
+            {availableColors.length > 0 && (
               <div className="mb-6 bg-white rounded-lg shadow-md p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Select Color</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">Select Color <span className="text-red-500">*</span></h3>
                 <div className="flex flex-wrap gap-3">
                   {availableColors.map((color) => {
                     const colorMap: Record<string, string> = {
@@ -272,7 +313,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
                         type="button"
                         aria-label={`Select ${color}`}
                         title={color}
-                        onClick={() => setSelectedColor(color)}
+                        onClick={() => {
+                          setSelectedColor(color);
+                          setColorError("");
+                        }}
                         className={`w-10 h-10 md:w-12 md:h-12 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#063B78] ${
                           selectedColor === color
                             ? 'ring-2 ring-offset-2 ring-[#063B78] scale-110'
@@ -287,7 +331,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
                     );
                   })}
                 </div>
-                <p className="text-sm text-gray-500 mt-3">Selected: {selectedColor}</p>
+                <p className="text-sm text-gray-500 mt-3">Selected: {selectedColor || 'None'}</p>
+                {colorError && (
+                  <p className="text-sm text-red-600 mt-2 font-medium">{colorError}</p>
+                )}
               </div>
             )}
 
@@ -315,16 +362,15 @@ export default function ProductPageClient({ product }: { product: Product }) {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/checkout" className="flex-1">
-                <Button 
-                  size="lg" 
-                  className="w-full bg-[#063B78] hover:bg-[#052A5C] text-white shadow-lg"
-                  disabled={!product.inStock}
-                >
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  {product.inStock ? "Order Now" : "Out of Stock"}
-                </Button>
-              </Link>
+              <Button 
+                size="lg" 
+                className="flex-1 bg-[#063B78] hover:bg-[#052A5C] text-white shadow-lg"
+                disabled={!product.inStock}
+                onClick={handleOrderNow}
+              >
+                <ShoppingCart className="mr-2 h-5 w-5" />
+                {product.inStock ? "Order Now" : "Out of Stock"}
+              </Button>
               <Button 
                 size="lg" 
                 variant="outline"
@@ -388,6 +434,90 @@ export default function ProductPageClient({ product }: { product: Product }) {
           </div>
         )}
       </div>
+
+      {/* Credentials Modal */}
+      {showCredentialsModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Complete Your Order</h2>
+            <form onSubmit={handleCredentialsSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Full Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={credentials.fullName}
+                  onChange={(e) => setCredentials({...credentials, fullName: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#063B78] focus:border-transparent"
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  required
+                  value={credentials.phone}
+                  onChange={(e) => setCredentials({...credentials, phone: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#063B78] focus:border-transparent"
+                  placeholder="e.g., +254712345678"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Delivery Address / Town <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  required
+                  value={credentials.address}
+                  onChange={(e) => setCredentials({...credentials, address: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#063B78] focus:border-transparent"
+                  rows={3}
+                  placeholder="Enter your delivery address and town"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Selected Color
+                </label>
+                <input
+                  type="text"
+                  value={credentials.color}
+                  readOnly
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
+                />
+              </div>
+              <div className="bg-gray-50 rounded-lg p-4">
+                <p className="text-sm text-gray-600">
+                  <strong>Product:</strong> {product.name}<br />
+                  <strong>Quantity:</strong> {quantity}<br />
+                  <strong>Price:</strong> {formatPrice(product.salePrice || product.price)}
+                </p>
+              </div>
+              <div className="flex gap-3 pt-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setShowCredentialsModal(false)}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="flex-1 bg-[#063B78] hover:bg-[#052A5C]"
+                >
+                  Proceed to Checkout
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Toast Notification */}
       <Toast
