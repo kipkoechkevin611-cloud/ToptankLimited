@@ -4,9 +4,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { products, getCategories } from "@/lib/products";
-import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check, Award, ChevronLeft, ChevronRight } from "lucide-react";
+import { Droplets, Shield, Truck, Users, Home as HomeIcon, Factory, School, Building2, Wrench, ShoppingBag, Phone, MapPin, Package, Leaf, HardHat, Heart, Trash2, Check, Award } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
-import { useState, useEffect } from "react";
 
 export default function Home() {
   // Filter for specific Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
@@ -15,7 +14,8 @@ export default function Home() {
     p.category === 'TANKS' &&
     p.subcategory === 'Vertical Cylindrical' &&
     p.capacity &&
-    allowedCapacities.includes(p.capacity)
+    allowedCapacities.includes(p.capacity) &&
+    !p.name.includes('TopTank') // Exclude TopTank/Deluxe duplicates
   ).sort((a, b) => {
     const priceA = a.salePrice || a.price;
     const priceB = b.salePrice || b.price;
@@ -24,17 +24,6 @@ export default function Home() {
   const featuredProducts = verticalCylindricalTanks;
   const { addToCart } = useCart();
   const categories = getCategories();
-
-  // Hero carousel state - showcase Vertical Cylindrical Tanks
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const heroProducts = verticalCylindricalTanks.slice(0, 4); // Only Vertical Cylindrical Tanks
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroProducts.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [heroProducts.length]);
 
   const categoryIcons: Record<string, any> = {
     "TANKS": Droplets,
@@ -116,57 +105,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Rotating Product Carousel - Right Column */}
+            {/* Static Hero Image - Right Column */}
             <div className="flex justify-center relative order-1 md:order-2">
               <div className="relative w-72 h-96 md:w-96 md:h-[32rem]">
                 <div className="absolute inset-0 bg-white/5 rounded-2xl shadow-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 overflow-hidden">
-                  {heroProducts.length > 0 && heroProducts[currentSlide] ? (
-                    <img 
-                      src={heroProducts[currentSlide].image} 
-                      alt={heroProducts[currentSlide].name}
-                      className="w-full h-full object-contain p-8 md:p-12 transition-opacity duration-500"
-                      key={currentSlide}
-                    />
-                  ) : (
-                    <img 
-                      src="/TANKS/verticalcylindrical tank/Deluxe Cylindrical Tank.jpeg" 
-                      alt="TopTank Water Tank"
-                      className="w-full h-full object-contain p-8 md:p-12"
-                    />
-                  )}
+                  <img 
+                    src="/TANKS/verticalcylindrical tank/Deluxe Cylindrical Tank.jpeg" 
+                    alt="TopTank Water Tank"
+                    className="w-full h-full object-contain p-8 md:p-12"
+                  />
                 </div>
                 {/* Glow Effect */}
                 <div className="absolute -inset-4 bg-[#FFD21F]/10 rounded-2xl blur-2xl -z-10"></div>
-                
-                {/* Carousel Navigation */}
-                {heroProducts.length > 1 && (
-                  <>
-                    <button
-                      onClick={() => setCurrentSlide((prev) => (prev - 1 + heroProducts.length) % heroProducts.length)}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all hover:scale-110"
-                    >
-                      <ChevronLeft className="h-6 w-6 text-gray-800" />
-                    </button>
-                    <button
-                      onClick={() => setCurrentSlide((prev) => (prev + 1) % heroProducts.length)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all hover:scale-110"
-                    >
-                      <ChevronRight className="h-6 w-6 text-gray-800" />
-                    </button>
-                    {/* Carousel Dots */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {heroProducts.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentSlide(index)}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            currentSlide === index ? 'bg-white w-6' : 'bg-white/50'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
               </div>
             </div>
           </div>
