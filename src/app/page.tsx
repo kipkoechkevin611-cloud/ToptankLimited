@@ -24,14 +24,9 @@ export default function Home() {
   const { addToCart } = useCart();
   const categories = getCategories();
 
-  // Hero carousel state
+  // Hero carousel state - showcase Vertical Cylindrical Tanks
   const [currentSlide, setCurrentSlide] = useState(0);
-  const heroProducts = [
-    verticalCylindricalTanks[0], // 5000L or similar
-    ...products.filter(p => p.category === 'TANKS' && p.subcategory === 'Rectangular Loft').slice(0, 1),
-    ...products.filter(p => p.category === 'bins').slice(0, 1),
-    ...products.filter(p => p.category === 'Road Safety & Industrial').slice(0, 1)
-  ].filter(Boolean).slice(0, 4);
+  const heroProducts = verticalCylindricalTanks.slice(0, 4); // Only Vertical Cylindrical Tanks
 
   useEffect(() => {
     const timer = setInterval(() => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import { products, type Product, getCategories, getSubcategories, formatPrice } from "@/lib/products";
@@ -20,6 +20,7 @@ export default function ShopClient() {
   const [sortBy, setSortBy] = useState<string>("price-asc");
   const [showFilters, setShowFilters] = useState(false);
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   // Read category from URL params on mount and when URL changes
   useEffect(() => {
@@ -30,6 +31,18 @@ export default function ShopClient() {
       setSelectedCategory("all");
     }
   }, [searchParams]);
+
+  // Close search dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setShowSearchDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Update URL when category changes
   const handleCategoryChange = (category: string) => {
@@ -45,7 +58,15 @@ export default function ShopClient() {
   const categories = useMemo(() => getCategories(), []);
   const subcategories = useMemo(() => {
     if (selectedCategory === "all" || !selectedCategory) return [];
-    return getSubcategories(selectedCategory);
+    // Get unique subcategories from products for the selected category
+    const uniqueSubcategories = Array.from(
+      new Set(
+        products
+          .filter(p => p.category === selectedCategory && p.subcategory)
+          .map(p => p.subcategory)
+      )
+    );
+    return uniqueSubcategories;
   }, [selectedCategory]);
 
   const filteredAndSortedProducts = useMemo(() => {
@@ -161,7 +182,7 @@ export default function ShopClient() {
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
-            <div className="flex-1 relative">
+            <div className="flex-1 relative" ref={searchContainerRef}>
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
@@ -172,7 +193,6 @@ export default function ShopClient() {
                   setShowSearchDropdown(e.target.value.length >= 2);
                 }}
                 onFocus={() => setShowSearchDropdown(searchQuery.length >= 2)}
-                onBlur={() => setTimeout(() => setShowSearchDropdown(false), 200)}
                 className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#063B78] focus:border-transparent text-black bg-gray-50 focus:bg-white transition-all"
               />
               
@@ -183,11 +203,11 @@ export default function ShopClient() {
                     <Link
                       key={product.id}
                       href={`/product/${product.slug}`}
-                      className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
                       onClick={() => {
                         setSearchQuery("");
                         setShowSearchDropdown(false);
                       }}
+                      className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
                     >
                       <div className="w-16 h-16 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden">
                         <Image
@@ -288,22 +308,19 @@ export default function ShopClient() {
                   >
                     All {getCategoryConfig(selectedCategory)?.label || selectedCategory}
                   </button>
-                  {subcategories.map((subcategory) => {
-                    const config = getSubcategoryConfig(subcategory);
-                    return (
-                      <button
-                        key={subcategory}
-                        onClick={() => setSelectedSubcategory(subcategory)}
-                        className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                          selectedSubcategory === subcategory
-                            ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                            : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
-                        }`}
-                      >
-                        {config?.label || subcategory}
-                      </button>
-                    );
-                  })}
+                  {subcategories.map((subcategory) => (
+                    <button
+                      key={subcategory}
+                      onClick={() => subcategory && setSelectedSubcategory(subcategory)}
+                      className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                        selectedSubcategory === subcategory
+                          ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                      }`}
+                    >
+                      {subcategory}
+                    </button>
+                  ))}
                 </div>
               </>
             )}
