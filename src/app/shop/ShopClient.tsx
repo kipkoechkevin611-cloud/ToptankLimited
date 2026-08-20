@@ -6,7 +6,7 @@ import ProductCard from "@/components/ProductCard";
 import { products, type Product, getCategories, getSubcategories, formatPrice } from "@/lib/products";
 import { CATEGORY_CONFIG, SUBCATEGORY_CONFIG, getCategoryConfig, getSubcategoryConfig } from "@/lib/categories";
 import { Button } from "@/components/ui/button";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Search, SlidersHorizontal, X, Package, Droplets } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -263,15 +263,18 @@ export default function ShopClient() {
           </div>
 
           {/* Category Filters */}
-          <div className={`${showFilters ? "block" : "hidden"} lg:block mt-6 pt-6 border-t border-gray-100`}>
-            <h3 className="font-semibold text-gray-900 mb-4">Filter by Category</h3>
-            <div className="flex flex-wrap gap-2 mb-4">
+          <div className={`${showFilters ? "block" : "hidden"} lg:block mt-6 pt-6 border-t border-gray-200`}>
+            <h3 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5 text-[#063B78]" />
+              Filter by Category
+            </h3>
+            <div className="flex flex-wrap gap-3 mb-6">
               <button
                 onClick={() => handleCategoryChange("all")}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                   selectedCategory === "all"
-                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                    : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                 }`}
               >
                 All Products
@@ -282,10 +285,10 @@ export default function ShopClient() {
                   <button
                     key={category}
                     onClick={() => handleCategoryChange(category)}
-                    className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                    className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                       selectedCategory === category
-                        ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                        ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                        : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                     }`}
                   >
                     {config?.label || category}
@@ -296,14 +299,17 @@ export default function ShopClient() {
 
             {subcategories.length > 0 && (
               <>
-                <h3 className="font-semibold text-gray-900 mb-4 mt-6">Filter by {getCategoryConfig(selectedCategory)?.label || selectedCategory}</h3>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
+                  <Package className="h-5 w-5 text-[#063B78]" />
+                  Filter by {getCategoryConfig(selectedCategory)?.label || selectedCategory}
+                </h3>
+                <div className="flex flex-wrap gap-3 mb-6">
                   <button
                     onClick={() => setSelectedSubcategory("all")}
-                    className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                    className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                       selectedSubcategory === "all"
-                        ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                        ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                        : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                     }`}
                   >
                     All {getCategoryConfig(selectedCategory)?.label || selectedCategory}
@@ -312,10 +318,10 @@ export default function ShopClient() {
                     <button
                       key={subcategory}
                       onClick={() => subcategory && setSelectedSubcategory(subcategory)}
-                      className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                      className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                         selectedSubcategory === subcategory
-                          ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                          ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                          : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                       }`}
                     >
                       {subcategory}
@@ -326,44 +332,47 @@ export default function ShopClient() {
             )}
 
             {/* Capacity Filters */}
-            <h3 className="font-semibold text-gray-900 mb-4 mt-6">Filter by Capacity</h3>
-            <div className="flex flex-wrap gap-2">
+            <h3 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
+              <Droplets className="h-5 w-5 text-[#063B78]" />
+              Filter by Capacity
+            </h3>
+            <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setSelectedCapacity("all")}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                   selectedCapacity === "all"
-                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                    : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                 }`}
               >
                 All Capacities
               </button>
               <button
                 onClick={() => setSelectedCapacity("small")}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                   selectedCapacity === "small"
-                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                    : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                 }`}
               >
                 100L - 1,000L
               </button>
               <button
                 onClick={() => setSelectedCapacity("medium")}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                   selectedCapacity === "medium"
-                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                    : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                 }`}
               >
                 1,500L - 5,000L
               </button>
               <button
                 onClick={() => setSelectedCapacity("large")}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-sm ${
                   selectedCapacity === "large"
-                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    ? "bg-[#063B78] text-white shadow-md hover:bg-[#052A5C]"
+                    : "bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-300 hover:border-[#063B78]"
                 }`}
               >
                 6,000L+
