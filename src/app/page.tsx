@@ -9,15 +9,19 @@ import { useCart } from "@/contexts/CartContext";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  // Filter for Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
+  // Filter for specific Vertical Cylindrical Tanks and sort by price descending (highest to lowest)
+  const allowedCapacities = [1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 16000, 20000, 24000];
   const verticalCylindricalTanks = products.filter(p =>
-    p.category === 'TANKS' && p.subcategory === 'Vertical Cylindrical'
+    p.category === 'TANKS' &&
+    p.subcategory === 'Vertical Cylindrical' &&
+    p.capacity &&
+    allowedCapacities.includes(p.capacity)
   ).sort((a, b) => {
     const priceA = a.salePrice || a.price;
     const priceB = b.salePrice || b.price;
     return priceB - priceA; // Higher price first (descending)
   });
-  const featuredProducts = verticalCylindricalTanks; // Show ALL vertical tanks
+  const featuredProducts = verticalCylindricalTanks;
   const { addToCart } = useCart();
   const categories = getCategories();
 
