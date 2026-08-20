@@ -44,7 +44,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
       </Link>
 
       {/* Product Info */}
-      <div className="p-4 flex-1 flex flex-col">
+      <div className="p-2 sm:p-4 flex-1 flex flex-col">
         {/* Category Badge */}
         <div className="mb-2">
           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">

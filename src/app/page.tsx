@@ -164,7 +164,7 @@ export default function Home() {
               Our most popular water tanks trusted by customers across Kenya
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {featuredProducts.map((product) => (
               <ProductCard 
                 key={product.id} 
@@ -201,11 +201,7 @@ export default function Home() {
               return (
                 <Link
                   key={category}
-                  href={`/shop`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `/shop?category=${encodeURIComponent(category)}`;
-                  }}
+                  href={`/shop?category=${encodeURIComponent(category)}`}
                   className="bg-white hover:bg-blue-50 rounded-xl p-8 text-center transition-all duration-300 shadow-md hover:shadow-xl border border-gray-100 hover:border-blue-300 group"
                 >
                   <div className={`bg-gradient-to-br ${colorClass} w-16 h-16 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform`}>

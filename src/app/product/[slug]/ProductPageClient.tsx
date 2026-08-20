@@ -8,20 +8,26 @@ import { formatPrice, formatCapacity, products } from "@/lib/products";
 import type { Product } from "@/lib/products";
 import { ShoppingCart, Phone, ArrowLeft, Check, Shield, Droplets, Thermometer, Layers, Truck, Award, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import Toast from "@/components/Toast";
 
 export default function ProductPageClient({ product }: { product: Product }) {
   const { addToCart } = useCart();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string>("");
+  const [showToast, setShowToast] = useState(false);
 
   // Ensure images array exists and has at least one image
   const productImages = product.images && product.images.length > 0 ? product.images : [product.image];
 
-  // Extract available colors from specifications or features
+  // Extract available colors from specifications or features, or use defaults
   const availableColors = product.specifications?.color 
     ? product.specifications.color.split('/').map(c => c.trim()).filter(c => c && !c.toLowerCase().includes('various'))
-    : [];
+    : product.category === 'TANKS' 
+      ? ['Blue', 'Black', 'Green', 'Orange', 'Yellow']
+      : product.category === 'bins'
+        ? ['Green', 'Yellow', 'Blue', 'Black', 'Red']
+        : [];
 
   useEffect(() => {
     if (availableColors.length > 1) {
@@ -31,6 +37,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
 
   const handleAddToCart = () => {
     addToCart(product, quantity, selectedColor || undefined);
+    setShowToast(true);
   };
 
   const handleQuantityChange = (delta: number) => {
@@ -362,6 +369,15 @@ export default function ProductPageClient({ product }: { product: Product }) {
           </div>
         )}
       </div>
+
+      {/* Toast Notification */}
+      <Toast
+        show={showToast}
+        product={product}
+        quantity={quantity}
+        selectedColor={selectedColor}
+        onClose={() => setShowToast(false)}
+      />
     </div>
   );
 }

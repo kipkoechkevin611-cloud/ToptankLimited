@@ -2888,7 +2888,7 @@ export const products: Product[] = [
   // TANKS - Deluxe Cylindrical Tanks
   {
     id: "deluxe-200l",
-    name: "TopTank Deluxe Cylindrical Tank — 200 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 200 Litres",
     capacity: 200,
     price: 4800,
     slug: "toptank-deluxe-cylindrical-tank-200-litres",
@@ -2925,7 +2925,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-300l",
-    name: "TopTank Deluxe Cylindrical Tank — 300 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 300 Litres",
     capacity: 300,
     price: 5400,
     slug: "toptank-deluxe-cylindrical-tank-300-litres",
@@ -2962,7 +2962,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-500l",
-    name: "TopTank Deluxe Cylindrical Tank — 500 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 500 Litres",
     capacity: 500,
     price: 9750,
     slug: "toptank-deluxe-cylindrical-tank-500-litres",
@@ -2999,7 +2999,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-1000l",
-    name: "TopTank Deluxe Cylindrical Tank — 1,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 1,000 Litres",
     capacity: 1000,
     price: 15500,
     originalPrice: 15500,
@@ -3039,7 +3039,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-1500l",
-    name: "TopTank Deluxe Cylindrical Tank — 1,500 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 1,500 Litres",
     capacity: 1500,
     price: 23000,
     slug: "toptank-deluxe-cylindrical-tank-1500-litres",
@@ -3076,7 +3076,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-1900l",
-    name: "TopTank Deluxe Cylindrical Tank — 1,900 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 1,900 Litres",
     capacity: 1900,
     price: 27000,
     slug: "toptank-deluxe-cylindrical-tank-1900-litres",
@@ -3113,7 +3113,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-2000l",
-    name: "TopTank Deluxe Cylindrical Tank — 2,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 2,000 Litres",
     capacity: 2000,
     price: 28700,
     originalPrice: 28700,
@@ -3153,7 +3153,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-2300l",
-    name: "TopTank Deluxe Cylindrical Tank — 2,300 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 2,300 Litres",
     capacity: 2300,
     price: 31600,
     slug: "toptank-deluxe-cylindrical-tank-2300-litres",
@@ -3190,10 +3190,13 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-2500l",
-    name: "TopTank Deluxe Cylindrical Tank — 2,500 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 2,500 Litres",
     capacity: 2500,
-    price: 35600,
-    slug: "toptank-deluxe-cylindrical-tank-2500-litres",
+    price: 21120,
+    originalPrice: 26400,
+    salePrice: 21120,
+    onSale: true,
+    slug: "toptank-vertical-cylindrical-tank-2500-litres",
     description: "Premium deluxe cylindrical tank with enhanced durability and modern design. Perfect for residential and commercial water storage needs.",
     features: [
       "Premium deluxe construction",
@@ -3228,7 +3231,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-3000l",
-    name: "TopTank Deluxe Cylindrical Tank — 3,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 3,000 Litres",
     capacity: 3000,
     price: 41900,
     originalPrice: 41900,
@@ -3268,7 +3271,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-3200l",
-    name: "TopTank Deluxe Cylindrical Tank — 3,200 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 3,200 Litres",
     capacity: 3200,
     price: 46000,
     slug: "toptank-deluxe-cylindrical-tank-3200-litres",
@@ -3305,7 +3308,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-3500l",
-    name: "TopTank Deluxe Cylindrical Tank — 3,500 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 3,500 Litres",
     capacity: 3500,
     price: 48800,
     slug: "toptank-deluxe-cylindrical-tank-3500-litres",
@@ -3342,7 +3345,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-4200l",
-    name: "TopTank Deluxe Cylindrical Tank — 4,200 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 4,200 Litres",
     capacity: 4200,
     price: 59200,
     slug: "toptank-deluxe-cylindrical-tank-4200-litres",
@@ -3379,7 +3382,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-4600l",
-    name: "TopTank Deluxe Cylindrical Tank — 4,600 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 4,600 Litres",
     capacity: 4600,
     price: 67200,
     slug: "toptank-deluxe-cylindrical-tank-4600-litres",
@@ -3416,7 +3419,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-5000l",
-    name: "TopTank Deluxe Cylindrical Tank — 5,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 5,000 Litres",
     capacity: 5000,
     price: 74500,
     originalPrice: 74500,
@@ -3456,7 +3459,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-6000l",
-    name: "TopTank Deluxe Cylindrical Tank — 6,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 6,000 Litres",
     capacity: 6000,
     price: 90200,
     originalPrice: 90200,
@@ -3496,7 +3499,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-7500l",
-    name: "TopTank Deluxe Cylindrical Tank — 7,500 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 7,500 Litres",
     capacity: 7500,
     price: 110500,
     slug: "toptank-deluxe-cylindrical-tank-7500-litres",
@@ -3533,7 +3536,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-8000l",
-    name: "TopTank Deluxe Cylindrical Tank — 8,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 8,000 Litres",
     capacity: 8000,
     price: 121500,
     originalPrice: 121500,
@@ -3573,7 +3576,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-10000l",
-    name: "TopTank Deluxe Cylindrical Tank — 10,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 10,000 Litres",
     capacity: 10000,
     price: 155250,
     originalPrice: 155250,
@@ -3613,7 +3616,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-12000l",
-    name: "TopTank Deluxe Cylindrical Tank — 12,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 12,000 Litres",
     capacity: 12000,
     price: 211000,
     slug: "toptank-deluxe-cylindrical-tank-12000-litres",
@@ -3650,7 +3653,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-15000l",
-    name: "TopTank Deluxe Cylindrical Tank — 15,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 15,000 Litres",
     capacity: 15000,
     price: 274500,
     slug: "toptank-deluxe-cylindrical-tank-15000-litres",
@@ -3687,7 +3690,7 @@ export const products: Product[] = [
   },
   {
     id: "deluxe-24000l",
-    name: "TopTank Deluxe Cylindrical Tank — 24,000 Litres",
+    name: "TopTank Vertical Cylindrical Tank — 24,000 Litres",
     capacity: 24000,
     price: 471500,
     originalPrice: 471500,
