@@ -92,14 +92,18 @@ export default function ShopClient() {
       );
     }
 
-    // Filter by category
+    // Filter by category (case-insensitive)
     if (selectedCategory !== "all") {
-      filtered = filtered.filter((product) => product.category === selectedCategory);
+      filtered = filtered.filter((product) => 
+        product.category.toLowerCase() === selectedCategory.toLowerCase()
+      );
     }
 
-    // Filter by subcategory
+    // Filter by subcategory (case-insensitive)
     if (selectedSubcategory !== "all") {
-      filtered = filtered.filter((product) => product.subcategory === selectedSubcategory);
+      filtered = filtered.filter((product) => 
+        product.subcategory?.toLowerCase() === selectedSubcategory.toLowerCase()
+      );
     }
 
     // Filter by capacity
@@ -128,12 +132,16 @@ export default function ShopClient() {
         return priorityB - priorityA; // Higher priority first
       }
       
+      // Get effective price (sale price if on sale, otherwise regular price)
+      const priceA = a.salePrice || a.price;
+      const priceB = b.salePrice || b.price;
+      
       // Then apply regular sorting
       switch (sortBy) {
         case "price-asc":
-          return a.price - b.price;
+          return priceA - priceB;
         case "price-desc":
-          return b.price - a.price;
+          return priceB - priceA;
         case "name-asc":
           return a.name.localeCompare(b.name);
         case "name-desc":
