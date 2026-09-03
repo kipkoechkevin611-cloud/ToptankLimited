@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { formatPrice, formatCapacity } from "@/lib/products";
 import { sendOrderEmail, OrderEmailData } from "@/lib/email";
-import { ArrowLeft, CheckCircle, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowLeft, CheckCircle, Mail } from "lucide-react";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -46,7 +46,6 @@ export default function CheckoutPage() {
   const subtotal = getCartTotal();
   const deliveryFee = 0; // Free delivery
   const total = subtotal + deliveryFee;
-  const whatsappNumber = "254731957540";
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -109,45 +108,10 @@ export default function CheckoutPage() {
       
       if (!emailResult.success) {
         console.error('Failed to send email:', emailResult.error);
-        // Continue with order placement even if email fails
+        alert('There was an error sending your order. Please try again or call us directly.');
+        setIsSubmitting(false);
+        return;
       }
-
-      // Generate WhatsApp message
-      let message = `*TOPTANK NEW ORDER*%0A%0A`;
-      message += `*Customer:*%0A`;
-      message += `Name: ${formData.fullName}%0A`;
-      message += `Phone: ${formData.phoneNumber}%0A`;
-      message += `Email: ${formData.email}%0A%0A`;
-      
-      message += `*Delivery:*%0A`;
-      message += `County: ${formData.county}%0A`;
-      message += `Town/Area: ${formData.town}%0A`;
-      message += `Address: ${formData.deliveryAddress}%0A`;
-      if (formData.additionalInstructions) {
-        message += `Additional Notes: ${formData.additionalInstructions}%0A`;
-      }
-      message += `%0A*Order:*%0A`;
-      
-      items.forEach((item) => {
-        const unitPrice = item.product.salePrice || item.product.price;
-        message += `Product: ${item.product.name}%0A`;
-        if (item.product.capacity) {
-          message += `Capacity: ${formatCapacity(item.product.capacity)}%0A`;
-        }
-        if (item.selectedColor) {
-          message += `Colour: ${item.selectedColor}%0A`;
-        }
-        message += `Quantity: ${item.quantity}%0A`;
-        message += `Unit Price: ${formatPrice(unitPrice)}%0A`;
-        message += `Subtotal: ${formatPrice(unitPrice * item.quantity)}%0A%0A`;
-      });
-      
-      message += `*Total: ${formatPrice(total)}*%0A%0A`;
-      message += `Free delivery nationwide.`;
-
-      // Open WhatsApp with the message
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-      window.open(whatsappUrl, "_blank");
 
       setOrderPlaced(true);
       clearCart();
@@ -193,6 +157,9 @@ export default function CheckoutPage() {
               </p>
               <p className="text-sm text-gray-600">
                 <strong>Email:</strong> {formData.email}
+              </p>
+              <p className="text-sm text-green-600 mt-3 font-medium">
+                ✓ Order confirmation sent to {formData.email}
               </p>
             </div>
             <Link href="/">
@@ -470,12 +437,6 @@ export default function CheckoutPage() {
               </div>
 
               <div className="bg-blue-50 rounded-xl p-4 border border-blue-100">
-                <div className="flex items-start mb-3">
-                  <Phone className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-blue-900">
-                    We'll contact you at {formData.phoneNumber || "your phone number"} to confirm delivery details.
-                  </p>
-                </div>
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-blue-900">
