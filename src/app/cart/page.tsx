@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { formatPrice, formatCapacity } from "@/lib/products";
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, MessageCircle } from "lucide-react";
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 
 export default function CartPage() {
-  const { items, removeFromCart, updateQuantity, getCartTotal, orderNumber, generateOrderNumber, getWhatsAppMessage } = useCart();
+  const { items, removeFromCart, updateQuantity, getCartTotal, orderNumber, generateOrderNumber } = useCart();
 
   useEffect(() => {
     if (items.length > 0 && !orderNumber) {
@@ -40,7 +40,6 @@ export default function CartPage() {
   const subtotal = getCartTotal();
   const deliveryFee = 0; // Free delivery
   const total = subtotal + deliveryFee;
-  const whatsappNumber = "254731957540";
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -181,22 +180,10 @@ export default function CartPage() {
 
               <Link href="/checkout" className="block">
                 <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg mb-3">
-                  Order Now
+                  Proceed to Checkout
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=${getWhatsAppMessage()}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <Button size="lg" variant="outline" className="w-full border-green-600 text-green-600 hover:bg-green-50 mb-3">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Order via WhatsApp
-                </Button>
-              </a>
 
               <Link href="/shop" className="block">
                 <Button variant="outline" size="lg" className="w-full border-blue-200 text-blue-700 hover:bg-blue-50">
@@ -207,9 +194,6 @@ export default function CartPage() {
               <div className="mt-6 p-4 bg-green-50 rounded-xl border border-green-100">
                 <p className="text-sm text-green-900 leading-relaxed">
                   <strong>Free Nationwide Delivery:</strong> We deliver across Kenya at no extra cost. Contact us for delivery timelines.
-                </p>
-                <p className="text-sm text-green-900 leading-relaxed mt-2">
-                  <strong>WhatsApp:</strong> +254 731 957 540
                 </p>
               </div>
             </div>

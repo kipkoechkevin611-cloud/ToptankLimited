@@ -19,7 +19,6 @@ interface CartContextType {
   getCartTotal: () => number;
   getCartCount: () => number;
   generateOrderNumber: () => void;
-  getWhatsAppMessage: () => string;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -32,27 +31,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const timestamp = Date.now().toString().slice(-8);
     const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
     setOrderNumber(`TT-${timestamp}-${random}`);
-  };
-
-  const getWhatsAppMessage = () => {
-    if (items.length === 0) return "";
-    
-    let message = `*TopTank Order #${orderNumber}*\n\n`;
-    message += `*Order Details:*\n`;
-    
-    items.forEach((item, index) => {
-      const colorInfo = item.selectedColor ? ` (${item.selectedColor})` : "";
-      message += `${index + 1}. ${item.product.name}${colorInfo}\n`;
-      message += `   Quantity: ${item.quantity}\n`;
-      message += `   Price: KSh ${item.product.price.toLocaleString()} each\n`;
-      message += `   Subtotal: KSh ${(item.product.price * item.quantity).toLocaleString()}\n\n`;
-    });
-    
-    const total = getCartTotal();
-    message += `*Total: KSh ${total.toLocaleString()}*\n\n`;
-    message += `Please confirm my order. Free delivery nationwide.`;
-    
-    return encodeURIComponent(message);
   };
 
   const addToCart = (product: Product, quantity: number = 1, selectedColor?: string) => {
@@ -115,7 +93,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
         getCartTotal,
         getCartCount,
         generateOrderNumber,
-        getWhatsAppMessage,
       }}
     >
       {children}
