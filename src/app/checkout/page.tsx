@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { formatPrice, formatCapacity } from "@/lib/products";
-import { sendOrderEmail, OrderEmailData } from "@/lib/email";
+import { sendOrderEmailAction } from "@/app/actions/send-order-email";
 import { ArrowLeft, CheckCircle, Mail } from "lucide-react";
 
 export default function CheckoutPage() {
@@ -15,6 +15,8 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [orderNumber, setOrderNumber] = useState<string>("");
+  const [emailSent, setEmailSent] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -84,15 +86,29 @@ export default function CheckoutPage() {
       return;
     }
 
+    // Prevent duplicate submissions
+    if (emailSent) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
+      // Generate unique order number
+      const timestamp = Date.now().toString().slice(-8);
+      const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+      const generatedOrderNumber = `TT-${timestamp}-${random}`;
+
       // Prepare order data for email
-      const orderData: OrderEmailData = {
+      const orderData = {
+        orderNumber: generatedOrderNumber,
         customerName: formData.fullName,
         customerPhone: formData.phoneNumber,
-        customerAddress: `${formData.deliveryAddress}, ${formData.town}, ${formData.county}`,
         customerEmail: formData.email,
+        county: formData.county,
+        town: formData.town,
+        deliveryAddress: formData.deliveryAddress,
+        additionalInstructions: formData.additionalInstructions || undefined,
         items: items.map(item => ({
           name: item.product.name,
           capacity: item.product.capacity,
@@ -100,24 +116,31 @@ export default function CheckoutPage() {
           price: item.product.salePrice || item.product.price,
           quantity: item.quantity,
         })),
+        subtotal,
+        deliveryFee,
         totalAmount: total,
+        paymentMethod: 'Pending',
+        paymentStatus: 'Pending',
       };
 
-      // Send email
-      const emailResult = await sendOrderEmail(orderData);
+      // Send email via server action
+      const emailResult = await sendOrderEmailAction(orderData);
       
       if (!emailResult.success) {
         console.error('Failed to send email:', emailResult.error);
-        alert('There was an error sending your order. Please try again or call us directly.');
+        alert(`There was an error sending your order: ${emailResult.error}. Please try again or call us directly at +254 731 957 540.`);
         setIsSubmitting(false);
         return;
       }
 
+      // Mark email as sent to prevent duplicates
+      setEmailSent(true);
+      setOrderNumber(generatedOrderNumber);
       setOrderPlaced(true);
       clearCart();
     } catch (error) {
       console.error('Error processing order:', error);
-      alert('There was an error processing your order. Please try again.');
+      alert('There was an error processing your order. Please try again or call us directly at +254 731 957 540.');
     } finally {
       setIsSubmitting(false);
     }
@@ -147,6 +170,9 @@ export default function CheckoutPage() {
             <div className="bg-blue-50 rounded-xl p-6 mb-8 text-left border border-blue-100">
               <h2 className="font-semibold text-gray-900 mb-4">Order Summary</h2>
               <p className="text-sm text-gray-600 mb-2">
+                <strong>Order Number:</strong> #{orderNumber}
+              </p>
+              <p className="text-sm text-gray-600 mb-2">
                 <strong>Order Total:</strong> {formatPrice(total)}
               </p>
               <p className="text-sm text-gray-600 mb-2">
@@ -159,7 +185,7 @@ export default function CheckoutPage() {
                 <strong>Email:</strong> {formData.email}
               </p>
               <p className="text-sm text-green-600 mt-3 font-medium">
-                ✓ Order confirmation sent to {formData.email}
+                ✓ Order confirmation sent to toptank662@gmail.com
               </p>
             </div>
             <Link href="/">
