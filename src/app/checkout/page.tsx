@@ -82,22 +82,28 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    console.log('[CHECKOUT] Form submission started');
+
     if (!validateForm()) {
+      console.log('[CHECKOUT] Form validation failed');
       return;
     }
 
     // Prevent duplicate submissions
     if (emailSent) {
+      console.log('[CHECKOUT] Duplicate submission prevented - email already sent');
       return;
     }
 
     setIsSubmitting(true);
+    console.log('[CHECKOUT] Submitting order...');
 
     try {
       // Generate unique order number
       const timestamp = Date.now().toString().slice(-8);
       const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
       const generatedOrderNumber = `TT-${timestamp}-${random}`;
+      console.log('[CHECKOUT] Generated order number:', generatedOrderNumber);
 
       // Prepare order data for email
       const orderData = {
@@ -123,23 +129,28 @@ export default function CheckoutPage() {
         paymentStatus: 'Pending',
       };
 
+      console.log('[CHECKOUT] Calling server action to send email...');
       // Send email via server action
       const emailResult = await sendOrderEmailAction(orderData);
       
+      console.log('[CHECKOUT] Server action response:', emailResult);
+      
       if (!emailResult.success) {
-        console.error('Failed to send email:', emailResult.error);
+        console.error('[CHECKOUT] Email sending failed:', emailResult.error);
         alert(`There was an error sending your order: ${emailResult.error}. Please try again or call us directly at +254 731 957 540.`);
         setIsSubmitting(false);
         return;
       }
 
+      console.log('[CHECKOUT] Email sent successfully');
       // Mark email as sent to prevent duplicates
       setEmailSent(true);
       setOrderNumber(generatedOrderNumber);
       setOrderPlaced(true);
       clearCart();
+      console.log('[CHECKOUT] Order completed successfully');
     } catch (error) {
-      console.error('Error processing order:', error);
+      console.error('[CHECKOUT] Error processing order:', error);
       alert('There was an error processing your order. Please try again or call us directly at +254 731 957 540.');
     } finally {
       setIsSubmitting(false);

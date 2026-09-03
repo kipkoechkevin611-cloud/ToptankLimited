@@ -27,17 +27,26 @@ export interface OrderEmailData {
 }
 
 export async function sendOrderEmailAction(orderData: OrderEmailData) {
+  console.log('[ORDER EMAIL] Server action called');
+  console.log('[ORDER EMAIL] Order number:', orderData.orderNumber);
+  console.log('[ORDER EMAIL] Customer:', orderData.customerName);
+  console.log('[ORDER EMAIL] Items count:', orderData.items.length);
+  
   try {
     const apiKey = process.env.RESEND_API_KEY;
     
+    console.log('[ORDER EMAIL] RESEND_API_KEY present:', !!apiKey);
+    console.log('[ORDER EMAIL] RESEND_API_KEY length:', apiKey?.length || 0);
+    
     if (!apiKey) {
-      console.error('RESEND_API_KEY is not configured');
+      console.error('[ORDER EMAIL] ERROR: RESEND_API_KEY is not configured');
       return { 
         success: false, 
         error: 'Email service is not configured. Please contact support.' 
       };
     }
 
+    console.log('[ORDER EMAIL] Initializing Resend client...');
     const resend = new Resend(apiKey);
 
     const {
@@ -224,6 +233,11 @@ export async function sendOrderEmailAction(orderData: OrderEmailData) {
       </html>
     `;
 
+    console.log('[ORDER EMAIL] HTML email generated, length:', html.length);
+    console.log('[ORDER EMAIL] Sending email to: toptank662@gmail.com');
+    console.log('[ORDER EMAIL] From: onboarding@resend.dev');
+    console.log('[ORDER EMAIL] Subject: New TopTank Order — #' + orderNumber);
+    
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'toptank662@gmail.com',
@@ -231,10 +245,17 @@ export async function sendOrderEmailAction(orderData: OrderEmailData) {
       html: html,
     });
 
+    console.log('[ORDER EMAIL] Resend response received');
+    console.log('[ORDER EMAIL] Error present:', !!error);
+    console.log('[ORDER EMAIL] Data present:', !!data);
+    
     if (error) {
-      console.error('Error sending email:', error);
+      console.error('[ORDER EMAIL] ERROR sending email:', JSON.stringify(error, null, 2));
       return { success: false, error: error.message || 'Failed to send email' };
     }
+
+    console.log('[ORDER EMAIL] SUCCESS: Email sent with ID:', data?.id);
+    console.log('[ORDER EMAIL] Email delivered to: toptank662@gmail.com');
 
     revalidatePath('/checkout');
     
@@ -244,7 +265,8 @@ export async function sendOrderEmailAction(orderData: OrderEmailData) {
       orderNumber 
     };
   } catch (error) {
-    console.error('Error in sendOrderEmailAction:', error);
+    console.error('[ORDER EMAIL] CATCH ERROR:', error);
+    console.error('[ORDER EMAIL] Error details:', error instanceof Error ? error.message : String(error));
     return { 
       success: false, 
       error: error instanceof Error ? error.message : 'An unexpected error occurred' 
