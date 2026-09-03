@@ -108,7 +108,7 @@ export async function sendOrderEmail(orderData: OrderEmailData) {
           </div>
           <div class="footer">
             <p>This order was placed via TopTank Kenya website</p>
-            <p>Contact: +254731957540</p>
+            <p>Contact: +254 078 959 4557</p>
           </div>
         </div>
       </body>
