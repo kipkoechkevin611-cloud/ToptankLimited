@@ -1,6 +1,16 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || '');
+let resend: Resend | null = null;
+
+function getResendClient() {
+  if (!resend) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (apiKey) {
+      resend = new Resend(apiKey);
+    }
+  }
+  return resend;
+}
 
 export interface OrderEmailData {
   customerName: string;
@@ -19,6 +29,12 @@ export interface OrderEmailData {
 
 export async function sendOrderEmail(orderData: OrderEmailData) {
   try {
+    const client = getResendClient();
+    if (!client) {
+      console.warn('Resend clientNot initialized - email sending skipped');
+      return { success: false, error: 'Resend client not initialized' };
+    }
+
     const { customerName, customerPhone, customerAddress, customerEmail, items, totalAmount } = orderData;
 
     // Generate items list HTML
@@ -99,7 +115,7 @@ export async function sendOrderEmail(orderData: OrderEmailData) {
       </html>
     `;
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await client.emails.send({
       from: 'onboarding@resend.dev',
       to: 'toptank662@gmail.com',
       subject: `New Order from ${customerName} - TopTank Kenya`,
