@@ -29,13 +29,26 @@ export default function ProductPageClient({ product }: { product: Product }) {
   const productImages = product.images && product.images.length > 0 ? product.images : [product.image];
 
   // Extract available colors from specifications or features, or use defaults
-  const availableColors = product.specifications?.color 
+  // For TANKS, always ensure Black is included
+  let availableColors = product.specifications?.color 
     ? product.specifications.color.split('/').map(c => c.trim()).filter(c => c && !c.toLowerCase().includes('various'))
-    : product.category === 'TANKS' 
+    : [];
+  
+  // Ensure Black is always available for TANKS category
+  if (product.category === 'TANKS') {
+    if (!availableColors.includes('Black')) {
+      availableColors = ['Black', ...availableColors];
+    }
+  }
+  
+  // If still no colors, use defaults based on category
+  if (availableColors.length === 0) {
+    availableColors = product.category === 'TANKS' 
       ? ['Blue', 'Black', 'Green', 'Orange', 'Yellow']
       : product.category === 'bins'
         ? ['Green', 'Yellow', 'Blue', 'Black', 'Red']
         : [];
+  }
 
   useEffect(() => {
     if (availableColors.length > 1) {

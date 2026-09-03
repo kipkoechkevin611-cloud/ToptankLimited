@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { formatPrice, formatCapacity } from "@/lib/products";
+import { sendOrderEmail, OrderEmailData } from "@/lib/email";
 import { ArrowLeft, CheckCircle, Phone, Mail, MapPin } from "lucide-react";
 
 export default function CheckoutPage() {
@@ -86,46 +87,76 @@ export default function CheckoutPage() {
 
     setIsSubmitting(true);
 
-    // Generate WhatsApp message
-    let message = `*TOPTANK NEW ORDER*%0A%0A`;
-    message += `*Customer:*%0A`;
-    message += `Name: ${formData.fullName}%0A`;
-    message += `Phone: ${formData.phoneNumber}%0A`;
-    message += `Email: ${formData.email}%0A%0A`;
-    
-    message += `*Delivery:*%0A`;
-    message += `County: ${formData.county}%0A`;
-    message += `Town/Area: ${formData.town}%0A`;
-    message += `Address: ${formData.deliveryAddress}%0A`;
-    if (formData.additionalInstructions) {
-      message += `Additional Notes: ${formData.additionalInstructions}%0A`;
+    try {
+      // Prepare order data for email
+      const orderData: OrderEmailData = {
+        customerName: formData.fullName,
+        customerPhone: formData.phoneNumber,
+        customerAddress: `${formData.deliveryAddress}, ${formData.town}, ${formData.county}`,
+        customerEmail: formData.email,
+        items: items.map(item => ({
+          name: item.product.name,
+          capacity: item.product.capacity,
+          color: item.selectedColor,
+          price: item.product.salePrice || item.product.price,
+          quantity: item.quantity,
+        })),
+        totalAmount: total,
+      };
+
+      // Send email
+      const emailResult = await sendOrderEmail(orderData);
+      
+      if (!emailResult.success) {
+        console.error('Failed to send email:', emailResult.error);
+        // Continue with order placement even if email fails
+      }
+
+      // Generate WhatsApp message
+      let message = `*TOPTANK NEW ORDER*%0A%0A`;
+      message += `*Customer:*%0A`;
+      message += `Name: ${formData.fullName}%0A`;
+      message += `Phone: ${formData.phoneNumber}%0A`;
+      message += `Email: ${formData.email}%0A%0A`;
+      
+      message += `*Delivery:*%0A`;
+      message += `County: ${formData.county}%0A`;
+      message += `Town/Area: ${formData.town}%0A`;
+      message += `Address: ${formData.deliveryAddress}%0A`;
+      if (formData.additionalInstructions) {
+        message += `Additional Notes: ${formData.additionalInstructions}%0A`;
+      }
+      message += `%0A*Order:*%0A`;
+      
+      items.forEach((item) => {
+        const unitPrice = item.product.salePrice || item.product.price;
+        message += `Product: ${item.product.name}%0A`;
+        if (item.product.capacity) {
+          message += `Capacity: ${formatCapacity(item.product.capacity)}%0A`;
+        }
+        if (item.selectedColor) {
+          message += `Colour: ${item.selectedColor}%0A`;
+        }
+        message += `Quantity: ${item.quantity}%0A`;
+        message += `Unit Price: ${formatPrice(unitPrice)}%0A`;
+        message += `Subtotal: ${formatPrice(unitPrice * item.quantity)}%0A%0A`;
+      });
+      
+      message += `*Total: ${formatPrice(total)}*%0A%0A`;
+      message += `Free delivery nationwide.`;
+
+      // Open WhatsApp with the message
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(whatsappUrl, "_blank");
+
+      setOrderPlaced(true);
+      clearCart();
+    } catch (error) {
+      console.error('Error processing order:', error);
+      alert('There was an error processing your order. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    message += `%0A*Order:*%0A`;
-    
-    items.forEach((item) => {
-      const unitPrice = item.product.salePrice || item.product.price;
-      message += `Product: ${item.product.name}%0A`;
-      if (item.product.capacity) {
-        message += `Capacity: ${formatCapacity(item.product.capacity)}%0A`;
-      }
-      if (item.selectedColor) {
-        message += `Colour: ${item.selectedColor}%0A`;
-      }
-      message += `Quantity: ${item.quantity}%0A`;
-      message += `Unit Price: ${formatPrice(unitPrice)}%0A`;
-      message += `Subtotal: ${formatPrice(unitPrice * item.quantity)}%0A%0A`;
-    });
-    
-    message += `*Total: ${formatPrice(total)}*%0A%0A`;
-    message += `Free delivery nationwide.`;
-
-    // Open WhatsApp with the message
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(whatsappUrl, "_blank");
-
-    setOrderPlaced(true);
-    clearCart();
-    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
