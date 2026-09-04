@@ -137,7 +137,7 @@ export default function CheckoutPage() {
       
       if (!emailResult.success) {
         console.error('[CHECKOUT] Email sending failed:', emailResult.error);
-        alert(`There was an error sending your order: ${emailResult.error}. Please try again or call us directly at +254 078 959 4557.`);
+        alert(`There was an error sending your order: ${emailResult.error}. Please try again or call us directly at +254 100 198 769.`);
         setIsSubmitting(false);
         return;
       }

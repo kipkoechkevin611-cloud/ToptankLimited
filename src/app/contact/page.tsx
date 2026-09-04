@@ -29,8 +29,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                  <a href="tel:+2540789594557" className="text-blue-600 hover:text-blue-700 text-lg">
-                    +254 078 959 4557
+                  <a href="tel:+254100198769" className="text-blue-600 hover:text-blue-700 text-lg">
+                    +254 100 198 769
                   </a>
                   <p className="text-gray-600 text-sm mt-1">Mon-Sat: 8am - 6pm</p>
                 </div>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                 For immediate assistance, call us or send us a message.
               </p>
               <a
-                href="tel:+2540789594557"
+                href="tel:+254100198769"
                 className="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />

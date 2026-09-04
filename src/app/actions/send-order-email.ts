@@ -239,7 +239,7 @@ export async function sendOrderEmailAction(orderData: OrderEmailData) {
           </div>
           <div class="footer">
             <p>This order was placed via TopTank Kenya website</p>
-            <p>Contact: +254 078 959 4557</p>
+            <p>Contact: +254 100 198 769</p>
             <p>Email: toptank662@gmail.com</p>
           </div>
         </div>

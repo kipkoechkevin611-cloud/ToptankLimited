@@ -82,7 +82,7 @@ export default function Home() {
                     Browse All Products
                   </Button>
                 </Link>
-                <a href="tel:+2540789594557" className="w-full sm:w-auto">
+                <a href="tel:+254100198769" className="w-full sm:w-auto">
                   <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-white shadow-xl font-semibold">
                     <Phone className="mr-2 h-5 w-5" />
                     Call Now
@@ -93,8 +93,8 @@ export default function Home() {
               {/* Service Number Display */}
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 mb-6">
                 <p className="text-sm text-blue-100 mb-1">24/7 Customer Service</p>
-                <a href="tel:+2540789594557" className="text-2xl md:text-3xl font-bold text-white hover:text-[#FFD21F] transition-colors">
-                  +254 078 959 4557
+                <a href="tel:+254100198769" className="text-2xl md:text-3xl font-bold text-white hover:text-[#FFD21F] transition-colors">
+                  +254 100 198 769
                 </a>
               </div>
               
