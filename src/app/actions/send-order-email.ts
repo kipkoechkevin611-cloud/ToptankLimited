@@ -46,22 +46,8 @@ export async function sendOrderEmailAction(orderData: OrderEmailData) {
       };
     }
 
-    // Check for common API key formatting issues
-    const trimmedKey = apiKey.trim();
-    if (trimmedKey !== apiKey) {
-      console.warn('[ORDER EMAIL] WARNING: API key has whitespace, trimming');
-    }
-    
-    if (!trimmedKey.startsWith('re_')) {
-      console.error('[ORDER EMAIL] ERROR: API key does not start with "re_"');
-      return {
-        success: false,
-        error: 'API key format is invalid. Please check your Vercel environment variables.'
-      };
-    }
-
     console.log('[ORDER EMAIL] Initializing Resend client...');
-    const resend = new Resend(trimmedKey);
+    const resend = new Resend(apiKey);
 
     const {
       orderNumber,
