@@ -32,6 +32,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'AW-18433736540');
           `}
         </Script>
+        <Script id="google-ads-conversion" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-18433736540/cBwxCIXgyu8cENz-8dVE',
+                  'value': 1.0,
+                  'currency': 'USD',
+                  'event_callback': callback
+              });
+              return false;
+            }
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <CartProvider>

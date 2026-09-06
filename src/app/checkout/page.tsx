@@ -143,6 +143,10 @@ export default function CheckoutPage() {
       }
 
       console.log('[CHECKOUT] Email sent successfully');
+      // Track Google Ads conversion
+      if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+        (window as any).gtag_report_conversion();
+      }
       // Mark email as sent to prevent duplicates
       setEmailSent(true);
       setOrderNumber(generatedOrderNumber);
@@ -151,7 +155,7 @@ export default function CheckoutPage() {
       console.log('[CHECKOUT] Order completed successfully');
     } catch (error) {
       console.error('[CHECKOUT] Error processing order:', error);
-      alert('There was an error processing your order. Please try again or call us directly at +254 731 957 540.');
+      alert('There was an error processing your order. Please try again or call us directly at +254 100 198 769.');
     } finally {
       setIsSubmitting(false);
     }
